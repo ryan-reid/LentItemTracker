@@ -10,7 +10,7 @@
 ###### Saturday- Jan 27th
 - ~~Saturday Evening (before midnight): Ensure there are 5-10 interview questions per focal point (We only need 3-5 but we’ll cut what we don't need)~~ Completed Monday Evening (Two days late)
 
-####### F1: Does forgetfulness impact lending an item? 
+###### F1: Does forgetfulness impact lending an item? 
 - Have you lent an item, forgotten about it, and felt it was too late to ask for it back? 
 - Why didn’t you give it back?
 - What types of items are you more likely to forget you lent out?
@@ -21,7 +21,7 @@
 - Do you use any form of notification system to manage your daily activities?
     - Stickies? Physical Calendars? Google Calendar? Outlook? Etc
 
-####### F2: Who are you most likely to lend stuff to/lend from? 
+###### F2: Who are you most likely to lend stuff to/lend from? 
 - Would you lend an item to a stranger? (if you were guaranteed to have it returned to you)
       - What are your stipulations?
 - What is your stance on lend items to family members?
@@ -30,7 +30,7 @@
 - Before you ask to borrow an item, what are the things you consider?
 - How do you currently go about lending items?
 
-####### F3: What type items are you most comfortable lending out?
+###### F3: What type items are you most comfortable lending out?
 - How does the price of the item factor into your lending decision?
 - Can you give examples of some items that you have lent? 
 - What would make you lend out an item which was originally lent out to you? 
@@ -38,7 +38,7 @@
 - What are the most common items you lend out?
 - How do you verify you get the same item back you lent out?
 
-####### F4: What causes you to borrow vs buy an item?
+###### F4: What causes you to borrow vs buy an item?
 - What kind of items would you prefer to borrow than buy
 - Does the cost of the item play a role in borrowing versus buying
 - What role does cost play in borrowing versus buying
