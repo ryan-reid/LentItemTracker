@@ -4,10 +4,10 @@
 
 ### Schedule:
 
-###### Friday - Jan 26th
+##### Friday - Jan 26th
 - ~~Friday Evening (before midnight): Add and Initial Focal Points we want to use (3-5)~~ Completed Saturday (One day late)
 
-###### Saturday- Jan 27th
+##### Saturday- Jan 27th
 - ~~Saturday Evening (before midnight): Ensure there are 5-10 interview questions per focal point (We only need 3-5 but we’ll cut what we don't need)~~ Completed Monday Evening (Two days late)
 
 ###### F1: Does forgetfulness impact lending an item? 
@@ -50,13 +50,13 @@
 - Do you consider the items warranty when lending?
 
 
-###### Monday - Jan 29th
+##### Monday - Jan 29th
 - Monday Evening (before midnight): Have your field study (interview) completed and a bit of an analysis
 
-###### Tuesday - Jan 30th
+##### Tuesday - Jan 30th
 - Tuesday Morning (9:00AM before class): Discuss our findings
 
-###### Tuesday to Thursday - Jan 30/Feb 1st
+##### Tuesday to Thursday - Jan 30/Feb 1st
 - Create Report
 - Talk more about this on Tuesday Morning
 
