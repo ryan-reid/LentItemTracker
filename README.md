@@ -52,11 +52,40 @@
 - Monday Evening (before midnight): Have your field study (interview) completed and a bit of an analysis
 
 ##### Tuesday - Jan 30th
-- Tuesday Morning (9:00AM before class): Discuss our findings
+~~- Tuesday Morning (9:00AM before class): Discuss our findings~~
+- Step 6: Analyze field study data - Everyone analyze one focal point (by Midnight, hard deadline):
+	- Ryan F4
+	- Garith F3
+	- George F2
+	- Matt F1
+	- Try and find 1-2 requirements for section 10
+    - Mark Priority with P1, P2, P3, P4 when adding to 'Requirements for Project' doc.
 
-##### Tuesday to Thursday - Jan 30/Feb 1st
-- Create Report
-- Talk more about this on Tuesday Morning
+- Step 10: Requirements Defintion (up to 1 page)
+	- Created a doc 'Requirements for project'
+	- Garith is owning this
+	- Project Direction doc in drive
+	- Results from step 6
+	- Results from (7-9) from Matt
+ 
+- Step 11: Design Alternatives (by Midnight, hard deadline):
+	- Finish today and upload to Google Drive in Folder called 'Sketches'
+	- Garith
+	- Matt
+	- Ryan
+	- George
+	- Boss
+
+##### Wednesday Jan 31st (By midnight, hard deadline):
+- Step 7: Report Results:
+	- Matt is owning this
+
+- Step 8: Revise Scenarios:
+	- Matt is owning this
+
+- Step 9: Formulate conclusions and recommendations:
+	- Matt is owning this
 
 ##### Thursday - Feb 1st
-- Milestone 2 Due
+- Boss is brining a binder
+- Milestone 2 Due at 10AM SHARP
