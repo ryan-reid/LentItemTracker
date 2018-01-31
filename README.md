@@ -54,7 +54,7 @@
 ##### Tuesday - Jan 30th
 ~~- Tuesday Morning (9:00AM before class): Discuss our findings~~
 - Step 6: Analyze field study data - Everyone analyze one focal point (by Midnight, hard deadline):
-	- Ryan F4
+	~~- Ryan F4~~
 	- Garith F3
 	- George F2
 	- Matt F1
@@ -72,7 +72,7 @@
 	- Finish today and upload to Google Drive in Folder called 'Sketches'
 	- Garith
 	- Matt
-	- Ryan
+	~~- Ryan~~
 	- George
 	- Boss
 
