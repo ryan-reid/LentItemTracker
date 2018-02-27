@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/search"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/navigation_outgoing_requests"
+        android:icon="@drawable/outbound_arrow"
+        android:title="@string/outgoing_requests" />
+
+    <item
+        android:id="@+id/navigation_incoming_requests"
+        android:icon="@drawable/inbound_arrow"
+        android:title="@string/incoming_requests"/>
+
+    <item
+        android:id="@+id/navigation_backpack"
+        android:icon="@drawable/backpack"
+        android:title="@string/backpack" />
+
+
+
+</menu>
