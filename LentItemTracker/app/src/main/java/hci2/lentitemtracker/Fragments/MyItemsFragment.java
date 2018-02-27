@@ -10,13 +10,15 @@ import android.view.ViewGroup;
 
 import hci2.lentitemtracker.R;
 
-public class SearchFragment extends Fragment {
+
+public class MyItemsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public SearchFragment() {
+    public MyItemsFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_my_items, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

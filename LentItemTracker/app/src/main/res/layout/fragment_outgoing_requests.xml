@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hci2.lentitemtracker.Fragments.SearchFragment">
+    tools:context="hci2.lentitemtracker.Fragments.OutgoingRequestsFragment"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Search Blank Fragment" />
+        android:layout_height="435dp"
+        android:text="Outgoing Requests Blank Fragment" />
 
 </FrameLayout>
