@@ -6,8 +6,6 @@ import java.util.Iterator;
 
 public class UserItemList {
 
-    private UserItemList() {};
-
     private static UserItemList Instance = null;
 
     private static ArrayList<ItemDataModel> items = new ArrayList<ItemDataModel>();
