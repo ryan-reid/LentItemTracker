@@ -1,6 +1,7 @@
 package hci2.lentitemtracker.Persistence;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class UserItemList {
@@ -20,9 +21,18 @@ public class UserItemList {
 
     public static void addItemToUserList(ItemDataModel item) {
         items.add(item);
+
     }
 
     public static ArrayList<ItemDataModel> getItems() {
         return items;
     }
+
+    public static void removeItemWithGuid(String guid) {
+        for(Iterator<ItemDataModel> iterator = items.iterator(); iterator.hasNext(); ) {
+            if(iterator.next().getId().equals(guid))
+                iterator.remove();
+        }
+    }
+
 }

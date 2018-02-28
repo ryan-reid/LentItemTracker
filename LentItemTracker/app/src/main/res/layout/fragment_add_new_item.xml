@@ -6,7 +6,7 @@
     android:minHeight="2200dp"
     android:minWidth="1500dp"
     android:layout_centerInParent="true"
-    tools:context=".Presentation.Fragments.AddNewItemFragment">
+    tools:context=".Presentation.Fragments.DialogFragments.AddNewItemFragment">
 
     <TextView
         android:id="@+id/daysAvailableTitle"

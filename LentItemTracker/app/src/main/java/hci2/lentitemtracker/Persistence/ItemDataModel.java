@@ -10,6 +10,7 @@ public class ItemDataModel {
     private String title;
     private int numDaysAvailableForLending;
     private boolean available;
+    private String id;
 
     public ItemDataModel(Bitmap image, String title, String description, int numDaysAvailableForLending, boolean available) {
         this.image = image;
@@ -17,6 +18,7 @@ public class ItemDataModel {
         this.title = title;
         this.numDaysAvailableForLending = numDaysAvailableForLending;
         this.available = available;
+        this.id = java.util.UUID.randomUUID().toString();
     }
 
     public Bitmap getImage() {
@@ -57,6 +59,10 @@ public class ItemDataModel {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public String getId() {
+        return id;
     }
 
 }

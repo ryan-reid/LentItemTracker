@@ -5,14 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import hci2.lentitemtracker.Persistence.UserItemList;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.R;
 
 
@@ -57,8 +56,10 @@ public class MyItemsFragment extends Fragment {
         if (recyclerView instanceof RecyclerView) {
             Context context = myView.getContext();
 
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(UserItemList.getInstance().getItems(), mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(getFragmentManager(), UserItemList.getInstance().getItems(), mListener));
         }
+
+
 
         return myView;
     }

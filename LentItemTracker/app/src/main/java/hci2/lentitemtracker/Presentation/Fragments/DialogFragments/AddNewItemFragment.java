@@ -1,4 +1,4 @@
-package hci2.lentitemtracker.Presentation.Fragments;
+package hci2.lentitemtracker.Presentation.Fragments.DialogFragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
