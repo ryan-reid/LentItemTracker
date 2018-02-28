@@ -1,4 +1,4 @@
-package hci2.lentitemtracker.Formatting;
+package hci2.lentitemtracker.Presentation.Formatting;
 
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;

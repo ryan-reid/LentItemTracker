@@ -1,4 +1,4 @@
-package hci2.lentitemtracker.Activities;
+package hci2.lentitemtracker.Presentation.Activities;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
-import hci2.lentitemtracker.Formatting.BottomNavigationViewHelper;
-import hci2.lentitemtracker.Fragments.IncomingRequestsFragment;
-import hci2.lentitemtracker.Fragments.MyItemsFragment;
-import hci2.lentitemtracker.Fragments.OutgoingRequestsFragment;
-import hci2.lentitemtracker.Fragments.SearchFragment;
+import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
+import hci2.lentitemtracker.Presentation.Fragments.IncomingRequestsFragment;
+import hci2.lentitemtracker.Presentation.Fragments.MyItemsFragment;
+import hci2.lentitemtracker.Presentation.Fragments.OutgoingRequestsFragment;
+import hci2.lentitemtracker.Presentation.Fragments.SearchFragment;
 import hci2.lentitemtracker.R;
 
 public class MainActivity extends AppCompatActivity implements IncomingRequestsFragment.OnFragmentInteractionListener, MyItemsFragment.OnFragmentInteractionListener, OutgoingRequestsFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener {

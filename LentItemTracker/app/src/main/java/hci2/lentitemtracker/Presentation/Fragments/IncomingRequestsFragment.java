@@ -1,4 +1,4 @@
-package hci2.lentitemtracker.Fragments;
+package hci2.lentitemtracker.Presentation.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,13 +10,16 @@ import android.view.ViewGroup;
 
 import hci2.lentitemtracker.R;
 
-public class OutgoingRequestsFragment extends Fragment {
+
+public class IncomingRequestsFragment extends Fragment {
+
 
     private OnFragmentInteractionListener mListener;
 
-    public OutgoingRequestsFragment() {
+    public IncomingRequestsFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,14 @@ public class OutgoingRequestsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_outgoing_requests, container, false);
+        return inflater.inflate(R.layout.fragment_incoming_requests, container, false);
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
     }
 
     @Override

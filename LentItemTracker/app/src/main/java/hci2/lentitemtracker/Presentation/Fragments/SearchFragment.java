@@ -1,4 +1,4 @@
-package hci2.lentitemtracker.Fragments;
+package hci2.lentitemtracker.Presentation.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
