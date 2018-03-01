@@ -9,16 +9,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.Presentation.Fragments.IncomingRequestsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.MyItemsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.OutgoingRequestsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.SearchFragment;
 import hci2.lentitemtracker.R;
 
-public class MainActivity extends AppCompatActivity implements IncomingRequestsFragment.OnFragmentInteractionListener, MyItemsFragment.OnFragmentInteractionListener, OutgoingRequestsFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements AddNewItemFragment.OnCloseRefreshList {
 
     private TextView mTextMessage;
     FragmentManager fragmentManager;
+    AddNewItemFragment.OnCloseRefreshList closeRefreshInterface;
+
+    private static final String OUTGOING_REQUESTS_TAG = "Outgoing Requests Fragment";
+    private static final String INCOMING_REQUESTS_TAG = "Incoming Requests Fragment";
+    private static final String MY_ITEMS_TAG = "My Items Fragment";
+    private static final String SEARCH_TAG = "Search Fragment";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -28,19 +35,19 @@ public class MainActivity extends AppCompatActivity implements IncomingRequestsF
             switch (item.getItemId()) {
                 case R.id.navigation_outgoing_requests:
                     mTextMessage.setText(R.string.outgoing_requests);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new OutgoingRequestsFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.container, new OutgoingRequestsFragment(), OUTGOING_REQUESTS_TAG ).commit();
                     return true;
                 case R.id.navigation_incoming_requests:
                     mTextMessage.setText(R.string.incoming_requests);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new IncomingRequestsFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.container, new IncomingRequestsFragment(), INCOMING_REQUESTS_TAG).commit();
                     return true;
                 case R.id.navigation_backpack:
                     mTextMessage.setText(R.string.backpack);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new MyItemsFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.container, new MyItemsFragment(), MY_ITEMS_TAG).commit();
                     return true;
                 case R.id.navigation_search:
                     mTextMessage.setText(R.string.search);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new SearchFragment()).commit();
+                    fragmentManager.beginTransaction().replace(R.id.container, new SearchFragment(), SEARCH_TAG).commit();
                     return true;
             }
             return false;
@@ -64,10 +71,13 @@ public class MainActivity extends AppCompatActivity implements IncomingRequestsF
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new SearchFragment()).commit();
+
+        closeRefreshInterface = (AddNewItemFragment.OnCloseRefreshList) this;
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onCloseRefreshList() {
+        MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
+        itemFragment.refreshList();
     }
 }

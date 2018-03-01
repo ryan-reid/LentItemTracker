@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ public class MyItemsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private FloatingActionButton addNewItemFAB;
+    RecyclerView recyclerView;
 
     public MyItemsFragment() {
         // Required empty public constructor
@@ -44,13 +46,19 @@ public class MyItemsFragment extends Fragment {
 
     }
 
+
+    public void refreshList() {
+        recyclerView.setAdapter(new MyItemRecyclerViewAdapter(getFragmentManager(), UserItemList.getInstance().getItems(), mListener));
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_my_items, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) myView.findViewById(R.id.recycleViewlist);
+        recyclerView = (RecyclerView) myView.findViewById(R.id.recycleViewlist);
 
         // Set the adapter
         if (recyclerView instanceof RecyclerView) {
@@ -64,36 +72,18 @@ public class MyItemsFragment extends Fragment {
         return myView;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
     }
 
     private void addNewItem() {
         AddNewItemFragment frag = new AddNewItemFragment();
         frag.show(getFragmentManager(), "fragment");
     }
-
 
 }
