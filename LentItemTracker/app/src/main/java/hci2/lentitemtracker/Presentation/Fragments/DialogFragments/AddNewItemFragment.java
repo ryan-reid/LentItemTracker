@@ -93,6 +93,7 @@ public class AddNewItemFragment extends DialogFragment {
         }
     }
 
+    //big boys need big interfaces
     public interface OnCloseRefreshList {
         void onCloseRefreshList();
     }

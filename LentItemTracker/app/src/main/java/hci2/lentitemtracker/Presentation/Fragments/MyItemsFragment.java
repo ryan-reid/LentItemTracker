@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
+import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.R;
@@ -49,6 +52,19 @@ public class MyItemsFragment extends Fragment {
 
     public void refreshList() {
         recyclerView.setAdapter(new MyItemRecyclerViewAdapter(getFragmentManager(), UserItemList.getInstance().getItems(), mListener));
+    }
+
+    public void removeItem(String guuid) {
+        ArrayList<ItemDataModel> items = UserItemList.getInstance().getItems();
+
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == guuid) {
+                items.remove(i);
+            }
+        }
+        recyclerView.setAdapter(new MyItemRecyclerViewAdapter(getFragmentManager(), UserItemList.getInstance().getItems(), mListener));
+
+
     }
 
 

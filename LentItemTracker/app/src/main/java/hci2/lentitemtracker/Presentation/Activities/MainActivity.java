@@ -10,13 +10,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeleteItemFragment;
 import hci2.lentitemtracker.Presentation.Fragments.IncomingRequestsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.MyItemsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.OutgoingRequestsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.SearchFragment;
 import hci2.lentitemtracker.R;
 
-public class MainActivity extends AppCompatActivity implements AddNewItemFragment.OnCloseRefreshList {
+public class MainActivity extends AppCompatActivity implements AddNewItemFragment.OnCloseRefreshList, DeleteItemFragment.deleteFragmentInterface {
 
     private TextView mTextMessage;
     FragmentManager fragmentManager;
@@ -79,5 +80,12 @@ public class MainActivity extends AppCompatActivity implements AddNewItemFragmen
     public void onCloseRefreshList() {
         MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
         itemFragment.refreshList();
+    }
+
+    @Override
+    public void onDeleteDeleteItemFromList(String guid) {
+        MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
+        itemFragment.removeItem(guid);
+
     }
 }
