@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ public class AddNewItemFragment extends DialogFragment {
     private Button uploadImageButton;
     private Button okButton;
     private Button cancelButton;
+    private Bitmap itemImage;
     private OnFragmentInteractionListener mListener;
     private ItemDataModel dataModel;
 
@@ -64,12 +66,10 @@ public class AddNewItemFragment extends DialogFragment {
 
         if(requestCode==3 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
-            Bitmap bitmap = null;
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), selectedImage);
-                dataModel = new ItemDataModel(bitmap, ((EditText)getDialog().findViewById(R.id.itemName)).getText().toString(), ((EditText)getDialog().findViewById(R.id.itemDescription)).getText().toString(), Integer.parseInt(((EditText)getDialog().findViewById(R.id.daysAvailableInt)).getText().toString()), true);
+                itemImage = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), selectedImage);
                 ImageView imagePreview =  (ImageView) this.getDialog().findViewById(R.id.uploadedImagePreview);
-                imagePreview.setImageBitmap(bitmap);
+                imagePreview.setImageBitmap(itemImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -109,12 +109,48 @@ public class AddNewItemFragment extends DialogFragment {
         okButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                UserItemList.getInstance().addItemToUserList(dataModel);
-                getDialog().dismiss();
+
+                if(runValidation()) {
+                    dataModel = new ItemDataModel(itemImage, ((EditText) getDialog().findViewById(R.id.itemName)).getText().toString(), ((EditText) getDialog().findViewById(R.id.itemDescription)).getText().toString(), Integer.parseInt(((EditText) getDialog().findViewById(R.id.daysAvailableInt)).getText().toString()), true);
+                    UserItemList.getInstance().addItemToUserList(dataModel);
+                    getDialog().dismiss();
+                }
             }
         });
 
     }
 
+    private boolean runValidation() {
+        if (!isitemNameValid() || !isItemDescriptionValid() || !isDaysAvailableValid()) {
+            return false;
+        }
+        return true;
+    }
 
+    private boolean isitemNameValid() {
+        if (TextUtils.isEmpty(((EditText) getDialog().findViewById(R.id.itemName)).getText())) {
+            ((EditText) getDialog().findViewById(R.id.itemName)).setError("Required Field");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isItemDescriptionValid() {
+        if (TextUtils.isEmpty(((EditText) getDialog().findViewById(R.id.itemDescription)).getText())) {
+            ((EditText) getDialog().findViewById(R.id.itemDescription)).setError("Required Field");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isDaysAvailableValid() {
+        if (TextUtils.isEmpty(((EditText) getDialog().findViewById(R.id.daysAvailableInt)).getText())) {
+            ((EditText) getDialog().findViewById(R.id.daysAvailableInt)).setError("Required Field");
+            return false;
+        }
+        return true;
+
+
+    }
 }
+
