@@ -19,12 +19,10 @@ import hci2.lentitemtracker.R;
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
     private final ArrayList<ItemDataModel> mValues;
-    private final MyItemsFragment.OnFragmentInteractionListener mListener;
     FragmentManager fragmentManager;
 
-    public MyItemRecyclerViewAdapter(FragmentManager fragmentManager, ArrayList<ItemDataModel> items, MyItemsFragment.OnFragmentInteractionListener listener) {
+    public MyItemRecyclerViewAdapter(FragmentManager fragmentManager, ArrayList<ItemDataModel> items) {
         mValues = items;
-        mListener = listener;
         this.fragmentManager = fragmentManager;
     }
 
