@@ -2,12 +2,10 @@ package hci2.lentitemtracker.Presentation.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import hci2.lentitemtracker.Persistence.Adapters.MyPagerAdapter;
 import hci2.lentitemtracker.R;
 
 public class HomePageFragment extends Fragment {

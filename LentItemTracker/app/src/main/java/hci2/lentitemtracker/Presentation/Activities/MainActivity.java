@@ -13,6 +13,7 @@ import hci2.lentitemtracker.Persistence.IncomingRequestsList;
 import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeleteItemFragment;
+import hci2.lentitemtracker.Presentation.Fragments.HomePageFragment;
 import hci2.lentitemtracker.Presentation.Fragments.IncomingRequestsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.MyItemsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.OutgoingRequestsFragment;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements AddNewItemFragmen
     private static final String INCOMING_REQUESTS_TAG = "Incoming Requests Fragment";
     private static final String MY_ITEMS_TAG = "My Items Fragment";
     private static final String SEARCH_TAG = "Search Fragment";
+    private static final String HOME_PAGE = "Home Page";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements AddNewItemFragmen
                     mTextMessage.setText(R.string.search);
                     fragmentManager.beginTransaction().replace(R.id.container, new SearchFragment(), SEARCH_TAG).commit();
                     return true;
+                case R.id.home_page:
+                    mTextMessage.setText("Home Page");
+                    fragmentManager.beginTransaction().replace(R.id.container, new HomePageFragment(), HOME_PAGE).commit();
+                    return true;
+
             }
             return false;
         }
