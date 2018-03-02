@@ -28,13 +28,12 @@ public class CancelOutgoingRequestFragment extends DialogFragment {
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the request, just redirect to main activity for now
+                        //TODO: implement cancel
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
                         dialog.dismiss();
                     }
                 });
@@ -52,8 +51,12 @@ public class CancelOutgoingRequestFragment extends DialogFragment {
         cancelRequestButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                // show dialog.
+                showCancelRequestDialog();
             }
         });
+    }
+
+    public void showCancelRequestDialog() {
+        this.show(this.getFragmentManager(), "cancel_request_dialog");
     }
 }
