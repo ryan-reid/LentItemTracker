@@ -52,4 +52,12 @@ public class IncomingRequestsList {
             }
         }
 
+        public static void setAvailability(String guid, boolean available) {
+            for(Iterator<ItemDataModel> iterator = items.iterator(); iterator.hasNext(); ) {
+                if(iterator.next().getId().equals(guid))
+                    iterator.next().setAvailable(false);
+            }
+
+        }
+
     }

@@ -33,7 +33,7 @@ public class AddNewItemFragment extends DialogFragment {
     private Button okButton;
     private Button cancelButton;
     private Bitmap itemImage;
-    private OnCloseRefreshList mCallback;
+    private newItemInterface mCallback;
     private ItemDataModel dataModel;
 
     public AddNewItemFragment() {
@@ -52,11 +52,11 @@ public class AddNewItemFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnCloseRefreshList) {
-            mCallback = (OnCloseRefreshList) context;
+        if (context instanceof newItemInterface) {
+            mCallback = (newItemInterface) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnGreenFragmentListener");
+                    + " must implement newItemInterface");
         }
 
     }
@@ -94,7 +94,7 @@ public class AddNewItemFragment extends DialogFragment {
     }
 
     //big boys need big interfaces
-    public interface OnCloseRefreshList {
+    public interface newItemInterface {
         void onCloseRefreshList();
     }
 

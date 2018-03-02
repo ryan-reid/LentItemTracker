@@ -12,6 +12,8 @@ import android.widget.TextView;
 import hci2.lentitemtracker.Persistence.IncomingRequestsList;
 import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.ConfirmIncomingRequest;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeclineIncomingRequest;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeleteItemFragment;
 import hci2.lentitemtracker.Presentation.Fragments.HomePageFragment;
 import hci2.lentitemtracker.Presentation.Fragments.IncomingRequestsFragment;
@@ -20,11 +22,11 @@ import hci2.lentitemtracker.Presentation.Fragments.OutgoingRequestsFragment;
 import hci2.lentitemtracker.Presentation.Fragments.SearchFragment;
 import hci2.lentitemtracker.R;
 
-public class MainActivity extends AppCompatActivity implements AddNewItemFragment.OnCloseRefreshList, DeleteItemFragment.deleteFragmentInterface {
+public class MainActivity extends AppCompatActivity implements AddNewItemFragment.newItemInterface, DeleteItemFragment.deleteFragmentInterface, ConfirmIncomingRequest.confirmIncomingRequestInterface, DeclineIncomingRequest.declineIncomingRequestInterface{
 
     private TextView mTextMessage;
     FragmentManager fragmentManager;
-    AddNewItemFragment.OnCloseRefreshList closeRefreshInterface;
+    AddNewItemFragment.newItemInterface closeRefreshInterface;
 
     private static final String OUTGOING_REQUESTS_TAG = "Outgoing Requests Fragment";
     private static final String INCOMING_REQUESTS_TAG = "Incoming Requests Fragment";
@@ -82,8 +84,12 @@ public class MainActivity extends AppCompatActivity implements AddNewItemFragmen
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new SearchFragment()).commit();
+    }
 
-        closeRefreshInterface = (AddNewItemFragment.OnCloseRefreshList) this;
+    @Override
+    public void myItemsRefresh(String guid) {
+        MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
+        itemFragment.refreshList();
     }
 
     @Override
@@ -93,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements AddNewItemFragmen
     }
 
     @Override
-    public void onDeleteDeleteItemFromList(String guid) {
-        MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
-        itemFragment.removeItem(guid);
+    public void refreshIncomingRequestList() {
+        IncomingRequestsFragment itemFragment = (IncomingRequestsFragment) fragmentManager.findFragmentByTag(INCOMING_REQUESTS_TAG);
+        itemFragment.refreshList();
 
     }
 }

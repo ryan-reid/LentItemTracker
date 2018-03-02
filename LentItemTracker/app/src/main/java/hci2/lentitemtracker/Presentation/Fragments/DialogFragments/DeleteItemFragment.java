@@ -13,15 +13,15 @@ import hci2.lentitemtracker.R;
 public class DeleteItemFragment extends DialogFragment {
 
     private String guid;
-    private AddNewItemFragment.OnCloseRefreshList mCallback;
+    private deleteFragmentInterface mCallback;
     public DeleteItemFragment() {};
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof AddNewItemFragment.OnCloseRefreshList) {
-            mCallback = (AddNewItemFragment.OnCloseRefreshList) context;
+        if (context instanceof DeleteItemFragment.deleteFragmentInterface) {
+            mCallback = (DeleteItemFragment.deleteFragmentInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnGreenFragmentListener");
@@ -34,8 +34,6 @@ public class DeleteItemFragment extends DialogFragment {
 
         Bundle bundle = this.getArguments();
 
-
-
         if (bundle != null) {
             guid = bundle.getString("guid");
         }
@@ -44,7 +42,7 @@ public class DeleteItemFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 UserItemList.removeItemWithGuid(guid);
-                mCallback.onCloseRefreshList();
+                mCallback.myItemsRefresh(guid);
 
             }
         }).create();
@@ -52,7 +50,7 @@ public class DeleteItemFragment extends DialogFragment {
     }
 
     public interface deleteFragmentInterface {
-        void onDeleteDeleteItemFromList(String guid);
+        void myItemsRefresh(String guid);
     }
 
 
