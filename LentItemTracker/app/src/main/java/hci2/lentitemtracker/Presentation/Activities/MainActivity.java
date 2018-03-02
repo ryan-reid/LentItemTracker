@@ -29,37 +29,6 @@ public class MainActivity extends AppCompatActivity implements IncomingRequestsF
     FragmentManager fragmentManager;
     ArrayList<ItemDataModel> dataModels;
     ListView listView;
-    private static ItemAdapter itemAdapter;
-    private Spinner categorySpinner;
-    private Spinner sortSpinner;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_outgoing_requests:
-                    mTextMessage.setText(R.string.outgoing_requests);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new OutgoingRequestsFragment()).commit();
-                    return true;
-                case R.id.navigation_incoming_requests:
-                    mTextMessage.setText(R.string.incoming_requests);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new IncomingRequestsFragment()).commit();
-                    return true;
-                case R.id.navigation_backpack:
-                    mTextMessage.setText(R.string.backpack);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new MyItemsFragment()).commit();
-                    return true;
-                case R.id.navigation_search:
-                    mTextMessage.setText(R.string.search);
-                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new SearchFragment()).commit();
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +48,18 @@ public class MainActivity extends AppCompatActivity implements IncomingRequestsF
 
         listView = (ListView) findViewById(R.id.main_activity_list);
 
-        itemAdapter = new ItemAdapter(dataModels, getApplicationContext());
+        ItemAdapter itemAdapter = new ItemAdapter(dataModels, getApplicationContext());
         listView.setAdapter(itemAdapter);
 
-        sortSpinner = (Spinner) findViewById(R.id.item_sort_selector);
+        Spinner sortSpinner = (Spinner) findViewById(R.id.item_sort_selector);
         String[] sortValues = {"", "Days", "Name"};
         ArrayAdapter<String> sortAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sortValues);
         sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sortSpinner.setAdapter(sortAdapter);
 
-        categorySpinner = (Spinner) findViewById(R.id.item_category_selector);
+        Spinner categorySpinner = (Spinner) findViewById(R.id.item_category_selector);
         String[] categoryValues = {"All", "Books", "Costumes", "Hardware", "Music", "Movies", "Tools"};
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoryValues);
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categoryValues);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(categoryAdapter);
 
