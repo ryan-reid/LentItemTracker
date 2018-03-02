@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import hci2.lentitemtracker.Persistence.IncomingRequestsList;
 import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeleteItemFragment;
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements AddNewItemFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+        IncomingRequestsList.setContext(this);
 
         setContentView(R.layout.activity_main);
         fragmentManager = getSupportFragmentManager();

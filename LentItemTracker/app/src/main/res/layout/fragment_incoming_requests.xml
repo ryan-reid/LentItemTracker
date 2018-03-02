@@ -4,10 +4,22 @@
     android:layout_height="match_parent"
     tools:context=".Presentation.Fragments.IncomingRequestsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Incoming Requests Blank Fragment" />
+        android:id="@+id/incoming_requests_viewPager">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/incoming_request_num_items"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/incoming_request_item_name"/>
+
+    </android.support.v4.view.ViewPager>
 
 </FrameLayout>

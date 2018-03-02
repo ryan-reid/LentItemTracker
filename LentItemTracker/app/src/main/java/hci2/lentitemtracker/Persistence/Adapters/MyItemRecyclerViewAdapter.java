@@ -1,8 +1,6 @@
-package hci2.lentitemtracker.Presentation.Fragments;
+package hci2.lentitemtracker.Persistence.Adapters;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,8 +10,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
+
 import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeleteItemFragment;
+import hci2.lentitemtracker.Presentation.Fragments.MyItemsFragment;
 import hci2.lentitemtracker.R;
 
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
