@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:id="@+id/request_item_image"
+        android:src="@drawable/playstation_controller"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:contentDescription="@string/image_place_holder" />
+
+    <LinearLayout
+        android:id="@+id/content_list_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/request_item_image"
+        android:orientation="vertical"
+        android:paddingEnd="4dp"
+        android:paddingStart="4dp">
+
+        <TextView
+            android:id="@+id/request_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/content_list_layout"
+            android:layout_margin="4dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="Remote Controller"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/request_item_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/content_list_layout"
+            android:layout_below="@+id/request_item_days_available"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="11dp"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/request_item_arrow"
+        android:layout_width="50dip"
+        android:layout_height="60dip"
+        android:layout_alignBottom="@+id/request_item_image"
+        android:layout_alignStart="@+id/content_list_layout"
+        android:layout_marginStart="148dp"
+        android:contentDescription="@string/image_place_holder"
+        android:paddingStart="4dp"
+        android:src="@drawable/inbound_arrow" />
+
+    <TextView
+        android:id="@+id/request_item_days_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/content_list_layout"
+        android:layout_margin="4dp"
+        android:layout_toEndOf="@+id/request_item_arrow"
+        android:padding="4dp"
+        android:text="TextView"
+        android:textAlignment="viewEnd"
+        android:layout_alignParentEnd="true"/>
+
+
+
+</RelativeLayout>

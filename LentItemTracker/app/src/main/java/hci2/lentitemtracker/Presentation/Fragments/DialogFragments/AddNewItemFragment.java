@@ -19,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.R;
 
@@ -67,7 +68,7 @@ public class AddNewItemFragment extends DialogFragment {
             Bitmap bitmap = null;
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), selectedImage);
-                dataModel = new ItemDataModel(bitmap, ((EditText)getDialog().findViewById(R.id.itemName)).getText().toString(), ((EditText)getDialog().findViewById(R.id.itemDescription)).getText().toString(), Integer.parseInt(((EditText)getDialog().findViewById(R.id.daysAvailableInt)).getText().toString()), true);
+                dataModel = new ItemDataModel(bitmap, ((EditText)getDialog().findViewById(R.id.itemName)).getText().toString(), ((EditText)getDialog().findViewById(R.id.itemDescription)).getText().toString(), Integer.parseInt(((EditText)getDialog().findViewById(R.id.daysAvailableInt)).getText().toString()), ItemStatus.AVAILABLE);
                 ImageView imagePreview =  (ImageView) this.getDialog().findViewById(R.id.uploadedImagePreview);
                 imagePreview.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {

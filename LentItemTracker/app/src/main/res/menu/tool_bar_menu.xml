@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Presentation.Activities.MainActivity">
+
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/search"
+        android:title="@string/search"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item android:id="@+id/my_items_menu_item"
+        android:title="@string/my_items"/>
+
+    <item
+        android:id="@+id/user_profile_menu_item"
+        android:title="@string/profile"/>
+
+    <item
+        android:id="@+id/setting_menu_item"
+        android:title="@string/setting" />
+</menu>
