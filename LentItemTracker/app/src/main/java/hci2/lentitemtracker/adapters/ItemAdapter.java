@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.R;
 
 
@@ -36,7 +37,7 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
     }
 
     public ItemAdapter(Context context){
-        this(ItemDataModel.createSampleData(), context);
+        this(UserItemList.getInstance().getItems(), context);
     }
 
     @Override

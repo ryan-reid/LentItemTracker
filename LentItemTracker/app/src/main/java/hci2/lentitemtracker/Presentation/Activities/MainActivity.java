@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.adapters.MultiTabPageAdapter;
 import hci2.lentitemtracker.R;
 
@@ -76,10 +77,16 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-        if(id == R.id.app_bar_search){
-            handleSearchMenu();
-            return true;
+
+        switch(item.getItemId()) {
+            case R.id.app_bar_search:
+                handleSearchMenu();
+                return true;
+            case R.id.data_refresh_item:
+                UserItemList.refreshData();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

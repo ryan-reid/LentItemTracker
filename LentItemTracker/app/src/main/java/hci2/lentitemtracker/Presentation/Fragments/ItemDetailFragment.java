@@ -10,11 +10,13 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.R;
 
 
 public class ItemDetailFragment extends Fragment {
-    private static ArrayList<ItemDataModel> itemList = ItemDataModel.createSampleData();
+    private static ArrayList<ItemDataModel> itemList = UserItemList.getInstance().getItems();
+
 
     private static class ViewHolder{
         EditText itemName;

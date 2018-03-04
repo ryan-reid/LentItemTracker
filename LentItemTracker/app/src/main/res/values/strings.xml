@@ -9,6 +9,7 @@
     <string name="image_place_holder">TBD</string>
     <string name="default_status">Available</string>
     <string name="my_items">My Items</string>
+    <string name="data_refresh">Data Refresh</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
