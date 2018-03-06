@@ -10,6 +10,7 @@
     <string name="default_status">Available</string>
     <string name="my_items">My Items</string>
     <string name="data_refresh">Data Refresh</string>
+    <string name="add_new_item">Add Item</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

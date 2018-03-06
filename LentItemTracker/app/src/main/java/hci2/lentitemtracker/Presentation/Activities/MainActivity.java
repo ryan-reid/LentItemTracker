@@ -1,7 +1,11 @@
 package hci2.lentitemtracker.Presentation.Activities;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -45,6 +49,21 @@ public class MainActivity extends AppCompatActivity{
         tabLayout = (TabLayout) findViewById(R.id.main_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
+        final Activity activity = this;
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.bottom_menu_new_item:
+                                startActivity(new Intent(activity, NewItemActivity.class));
+                        }
+                        return false;
+                    }
+                }
+        );
     }
 
     @Override
