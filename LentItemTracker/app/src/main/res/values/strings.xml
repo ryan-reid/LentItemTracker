@@ -2,7 +2,7 @@
     <string name="app_name">LentItemTracker</string>
     <string name="outgoing_requests">Outgoing</string>
     <string name="incoming_requests">Incoming</string>
-    <string name="backpack">My Items</string>
+    <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="setting">Settings</string>
     <string name="profile">Profile</string>

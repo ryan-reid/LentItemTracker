@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Presentation.Activities.MainActivity"
-    android:id="@+id/main_activity_container">
+    android:id="@+id/main_activity_container"
+    android:windowSoftInputMode="adjustPan">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
