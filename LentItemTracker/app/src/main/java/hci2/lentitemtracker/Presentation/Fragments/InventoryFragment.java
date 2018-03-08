@@ -46,6 +46,7 @@ public class InventoryFragment extends Fragment {
 
     // Override in child class to specify which action to take
     public void itemClickListener(AdapterView<?> parent, View view, int position, long id){
+
         Intent intent = new Intent(this.getActivity(), DetailActivity.class);
         intent.putExtra("index", position);
         intent.putExtra("calledFrom", "inventory");

@@ -39,6 +39,4 @@ public class DeleteItemFragment extends DialogFragment {
     }
 
 
-
-
 }

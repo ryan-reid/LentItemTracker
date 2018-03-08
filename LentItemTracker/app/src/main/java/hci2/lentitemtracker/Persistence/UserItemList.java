@@ -19,6 +19,11 @@ public class UserItemList {
 
     private static ArrayList<ItemDataModel> requestItems = new ArrayList<ItemDataModel>();
 
+    private static ArrayList<ItemDataModel> lentItems = new ArrayList<ItemDataModel>();
+
+    private static ArrayList<ItemDataModel> borrowedItems = new ArrayList<ItemDataModel>();
+
+
     public static UserItemList getInstance(Context context) {
         if(Instance == null) {
             Instance = new UserItemList();
@@ -32,6 +37,10 @@ public class UserItemList {
             Instance = new UserItemList();
         }
         return Instance;
+    }
+
+    public static ArrayList<ItemDataModel> getLentItems() {
+        return lentItems;
     }
 
     private UserItemList() {
@@ -51,6 +60,7 @@ public class UserItemList {
     }
 
     public static ArrayList<ItemDataModel> getRequestItems() { return requestItems; }
+    public static ArrayList<ItemDataModel> getBorrowedItems() { return borrowedItems; }
 
     public static void removeItemWithGuid(String guid) {
         for(Iterator<ItemDataModel> iterator = items.iterator(); iterator.hasNext(); ) {
@@ -69,6 +79,38 @@ public class UserItemList {
     public static void refreshData() {
         items = createSampleData();
         requestItems = createSampleRequestItems();
+        lentItems = new ArrayList<ItemDataModel>();
+        borrowedItems = new ArrayList<ItemDataModel>();
+    }
+
+    public static ItemDataModel getItemByGuid(String guid) {
+
+        for(int i = 0; i < items.size(); i++) {
+            if(items.get(i).getId().equals(guid)) {
+                return items.get(i);
+            }
+        }
+
+        for(int i = 0; i < requestItems.size(); i++) {
+            if(requestItems.get(i).getId().equals(guid)) {
+                return requestItems.get(i);
+            }
+        }
+
+        return null;
+
+    }
+
+    public static void addItemToLentList(ItemDataModel item) {
+        lentItems.add(item);
+    }
+
+    public static void addToBorrowedList(ItemDataModel item) {
+        borrowedItems.add(item);
+    }
+
+    public static void addToRequestList(ItemDataModel item) {
+        requestItems.add(item);
     }
 
     private static ArrayList<ItemDataModel> createSampleData(){

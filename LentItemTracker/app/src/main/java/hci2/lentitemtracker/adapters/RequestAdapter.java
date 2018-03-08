@@ -1,7 +1,9 @@
 package hci2.lentitemtracker.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +15,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.ItemStatus;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AcceptRequestFragment;
 import hci2.lentitemtracker.R;
 
 
 public class RequestAdapter extends ItemAdapter {
     protected int resource = R.layout.request_item_row;
+    private FragmentManager fragmentManager;
 
-    public RequestAdapter(Context context) {
-        super(context);
-    }
 
-    public RequestAdapter(ArrayList<ItemDataModel> dataModels, Context context) {
+    public RequestAdapter(ArrayList<ItemDataModel> dataModels, Context context, FragmentManager fm) {
         super(dataModels, context);
+        this.fragmentManager = fm;
     }
 
     private static class RequestRowView{
@@ -61,13 +64,17 @@ public class RequestAdapter extends ItemAdapter {
         viewHolder.itemRequester.setText(dataModel.getOwner());
         viewHolder.numberOfDays.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));
         viewHolder.itemImage.setImageBitmap(dataModel.getImage());
-        Random randomGenerator = new Random();
-        int randNumber = randomGenerator.nextInt(10);
-        if(randNumber <= 5){
+
+        if(dataModel.getStatus().name().equals(ItemStatus.INCOMING.name())){
             viewHolder.arrowPointer.setImageResource(R.drawable.inbound_arrow);
         }else{
             viewHolder.arrowPointer.setImageResource(R.drawable.outbound_arrow);
         }
+
+        notifyDataSetChanged();
         return result;
     }
+
+
+
 }

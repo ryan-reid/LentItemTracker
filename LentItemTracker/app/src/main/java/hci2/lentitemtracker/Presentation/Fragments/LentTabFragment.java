@@ -1,13 +1,24 @@
 package hci2.lentitemtracker.Presentation.Fragments;
 
 
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+
+import hci2.lentitemtracker.Persistence.UserItemList;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AcceptRequestFragment;
+import hci2.lentitemtracker.adapters.ItemAdapter;
+import hci2.lentitemtracker.adapters.RequestAdapter;
 
 
 public class LentTabFragment extends InventoryFragment {
-    @Override
-    public void itemClickListener(AdapterView<?> parent, View view, int position, long id) {
 
+    private static ItemAdapter itemAdapter;
+
+    public ArrayAdapter createArrayAdapter(){
+        itemAdapter = new ItemAdapter(UserItemList.getInstance().getLentItems(), getContext());
+        return itemAdapter;
     }
 }

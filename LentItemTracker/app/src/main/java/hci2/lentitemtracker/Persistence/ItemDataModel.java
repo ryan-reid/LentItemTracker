@@ -11,7 +11,7 @@ public class ItemDataModel {
     private String owner;
     private String title;
     private int numDaysAvailableForLending;
-    private ItemStatus status = ItemStatus.AVAILABLE;
+    private ItemStatus status;
     private String id;
 
     public ItemDataModel(Bitmap image, String title, String description, String owner, int numDaysAvailableForLending, ItemStatus status) {
@@ -32,9 +32,6 @@ public class ItemDataModel {
         this(null, title, description, owner, numDaysAvailableForLending, available);
     }
 
-    public ItemDataModel(String title, String description, String owner, int numDaysAvailableForLending){
-        this(null, title, description, owner, numDaysAvailableForLending, ItemStatus.AVAILABLE);
-    }
 
     public Bitmap getImage() {
         return image;
@@ -92,13 +89,6 @@ public class ItemDataModel {
         return this.status;
     }
 
-    public static ArrayList<ItemDataModel> createSampleData(){
-        ArrayList<ItemDataModel> dataModels = new ArrayList<>();
-        dataModels.add(new ItemDataModel("Remote Controller", "Controls all sorts of TVs", "student1", 30));
-        dataModels.add(new ItemDataModel("Are we done yet", "Blue ray version with extended recording", "umbibenb", 7));
-        dataModels.add(new ItemDataModel("Lawn Mower", "Electric", "John Doe", 5, ItemStatus.PENDING));
-        dataModels.add(new ItemDataModel("Chainsaw", "Black & Decker", "umbibenb", 2));
-        return dataModels;
-    }
+    public void setStatus(ItemStatus status) { this.status = status;}
 
 }

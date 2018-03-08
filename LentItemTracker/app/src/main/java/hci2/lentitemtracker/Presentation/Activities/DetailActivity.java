@@ -33,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item_detail);
         int dataItemId = getIntent().getIntExtra("index", 0);
         String calledFrom = getIntent().getStringExtra("calledFrom");
-        ItemDataModel model = dataModels.get(dataItemId);
+        final ItemDataModel model = dataModels.get(dataItemId);
 
         ViewHolder holder = new ViewHolder();
         holder.itemName = (TextView) findViewById(R.id.item_detail_title);
@@ -52,13 +52,15 @@ public class DetailActivity extends AppCompatActivity {
 
         Button request_button = (Button) findViewById(R.id.request_item_button);
 
-        if(calledFrom.equals("inventory")) {
+        if(!calledFrom.equals("inventory")) {
             request_button.setVisibility(View.GONE);
         }
         request_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Item has been requested", Toast.LENGTH_LONG).show();
+                UserItemList.removeItemWithGuid(model.getId());
+                UserItemList.addToRequestList(model);
                 finish();
             }
         });
