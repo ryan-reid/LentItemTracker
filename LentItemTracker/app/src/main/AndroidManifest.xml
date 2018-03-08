@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Presentation.Activities.DetailActivity" />
-        <activity android:name=".Presentation.Activities.NewItemActivity" />
     </application>
 
 </manifest>

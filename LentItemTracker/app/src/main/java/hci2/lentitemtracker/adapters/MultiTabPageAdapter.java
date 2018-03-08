@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import hci2.lentitemtracker.Presentation.Fragments.BorrowTabFragment;
 import hci2.lentitemtracker.Presentation.Fragments.InventoryTabFragment;
-import hci2.lentitemtracker.Presentation.Fragments.ItemDetailFragment;
 import hci2.lentitemtracker.Presentation.Fragments.LentTabFragment;
 import hci2.lentitemtracker.Presentation.Fragments.RequestTabFragment;
 

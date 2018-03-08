@@ -14,7 +14,7 @@ public class ItemDataModel {
     private ItemStatus status = ItemStatus.AVAILABLE;
     private String id;
 
-    private ItemDataModel(Bitmap image, String title, String description, String owner, int numDaysAvailableForLending, ItemStatus status) {
+    public ItemDataModel(Bitmap image, String title, String description, String owner, int numDaysAvailableForLending, ItemStatus status) {
         this.image = image;
         this.description = description;
         this.title = title;
@@ -25,7 +25,7 @@ public class ItemDataModel {
     }
 
     public ItemDataModel(Bitmap image, String title, String description, int numDaysAvailableForLending, ItemStatus status) {
-        this(image, title, description, "umbibenb", numDaysAvailableForLending, status);
+        this(image, title, description, "Stu Dent", numDaysAvailableForLending, status);
     }
 
     public ItemDataModel(String title, String description, String owner, int numDaysAvailableForLending, ItemStatus available){

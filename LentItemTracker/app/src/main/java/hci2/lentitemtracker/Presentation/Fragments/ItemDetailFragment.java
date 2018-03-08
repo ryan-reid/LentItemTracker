@@ -15,13 +15,14 @@ import hci2.lentitemtracker.R;
 
 
 public class ItemDetailFragment extends Fragment {
-    private static ArrayList<ItemDataModel> itemList = UserItemList.getInstance().getItems();
+    private ArrayList<ItemDataModel> itemList = UserItemList.getInstance(this.getContext()).getItems();
 
 
     private static class ViewHolder{
         EditText itemName;
         EditText itemOwner;
         EditText itemDescription;
+
     }
 
     @Override
@@ -36,7 +37,6 @@ public class ItemDetailFragment extends Fragment {
             itemDataModel = itemList.get(0);
         }
         ViewHolder viewHolder = new ViewHolder();
-        viewHolder.itemName = (EditText) rootView.findViewById(R.id.item_detail_title);
         viewHolder.itemOwner = (EditText) rootView.findViewById(R.id.item_detail_owner);
         viewHolder.itemDescription = (EditText) rootView.findViewById(R.id.item_detail_description);
 

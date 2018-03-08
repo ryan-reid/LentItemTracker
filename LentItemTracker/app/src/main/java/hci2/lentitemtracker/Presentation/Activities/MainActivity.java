@@ -1,12 +1,11 @@
 package hci2.lentitemtracker.Presentation.Activities;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 
@@ -23,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import hci2.lentitemtracker.Persistence.UserItemList;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.adapters.MultiTabPageAdapter;
 import hci2.lentitemtracker.R;
 
@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        UserItemList.setContext(this);
+
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         pageAdapter = new MultiTabPageAdapter(getSupportFragmentManager());
@@ -60,13 +62,20 @@ public class MainActivity extends AppCompatActivity{
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.bottom_menu_new_item:
-                                startActivity(new Intent(activity, NewItemActivity.class));
+                                addNewItem();
                         }
                         return false;
                     }
                 }
         );
     }
+
+    private void addNewItem() {
+        AddNewItemFragment frag = new AddNewItemFragment();
+        FragmentManager fm = this.getSupportFragmentManager();
+        frag.show(fm, "addNewItemFragment");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

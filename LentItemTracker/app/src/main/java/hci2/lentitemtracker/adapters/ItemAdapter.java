@@ -37,7 +37,7 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
     }
 
     public ItemAdapter(Context context){
-        this(UserItemList.getInstance().getItems(), context);
+        this(UserItemList.getInstance(context).getItems(), context);
     }
 
     @Override
@@ -56,6 +56,7 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
             viewHolder = new ViewHolder();
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             view = layoutInflater.inflate(R.layout.single_item_list_view, viewGroup, false);
+            viewHolder.thumbnail = (ImageView) view.findViewById(R.id.itemThumbnail);
             viewHolder.itemTitle = (TextView) view.findViewById(R.id.itemTitle);
             viewHolder.itemOwner = (TextView) view.findViewById(R.id.itemOwner);
             viewHolder.duration = (TextView) view.findViewById(R.id.duration);
@@ -68,6 +69,9 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
             result = view;
         }
 
+        if(dataModel.getImage() != null) {
+            viewHolder.thumbnail.setImageBitmap(dataModel.getImage());
+        }
         viewHolder.itemTitle.setText(dataModel.getTitle());
         viewHolder.itemOwner.setText(dataModel.getOwner());
         viewHolder.duration.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));

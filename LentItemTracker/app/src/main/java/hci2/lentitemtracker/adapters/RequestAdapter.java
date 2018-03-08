@@ -23,6 +23,10 @@ public class RequestAdapter extends ItemAdapter {
         super(context);
     }
 
+    public RequestAdapter(ArrayList<ItemDataModel> dataModels, Context context) {
+        super(dataModels, context);
+    }
+
     private static class RequestRowView{
         TextView itemRequester;
         TextView numberOfDays;
@@ -33,7 +37,7 @@ public class RequestAdapter extends ItemAdapter {
 
     @NonNull
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup){
+    public View getView(int position, View view, ViewGroup viewGroup) {
         RequestAdapter.RequestRowView viewHolder;
         ItemDataModel dataModel = this.getItem(position);
         final View result;
@@ -56,7 +60,7 @@ public class RequestAdapter extends ItemAdapter {
         viewHolder.itemTitle.setText(dataModel.getTitle());
         viewHolder.itemRequester.setText(dataModel.getOwner());
         viewHolder.numberOfDays.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));
-        viewHolder.itemImage.setImageResource(R.drawable.backpack);
+        viewHolder.itemImage.setImageBitmap(dataModel.getImage());
         Random randomGenerator = new Random();
         int randNumber = randomGenerator.nextInt(10);
         if(randNumber <= 5){
