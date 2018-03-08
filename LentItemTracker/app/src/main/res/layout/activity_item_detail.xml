@@ -44,35 +44,62 @@
 
             </LinearLayout>
 
-
-            <CheckBox
-                android:id="@+id/item_detail_pickup"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pickup"
-                android:padding="4dp"/>
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/item_detail_pickup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Pickup" />
+
+                <TextView
+                    android:id="@+id/itemStatus"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/item_detail_pickup"
+                    android:layout_alignBottom="@+id/item_detail_pickup"
+                    android:layout_marginEnd="14dp"
+                    android:layout_toStartOf="@+id/StatusValue"
+                    android:text="Status:"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/StatusValue"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/itemStatus"
+                    android:layout_alignParentRight="true"
+                    android:textAlignment="viewStart" />
+
+            </RelativeLayout>
+
 
             <TextView
                 android:id="@+id/item_detail_description"
                 android:layout_width="match_parent"
-                android:layout_height="133dp"
+                android:layout_height="54dp"
                 android:ems="12"
                 android:hint="Description"
                 android:lines="4"
-                android:padding="4dp"/>
+                android:padding="4dp" />
 
             <ImageView
                 android:id="@+id/item_detail_image"
-                android:layout_width="379dp"
-                android:layout_height="380dp"
-                app:srcCompat="@drawable/backpack"
-                android:layout_marginTop="4dp"/>
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="4dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/backpack" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:backgroundTint="@color/colorPrimary"
+                android:layout_gravity="center"
                 android:padding="4dp"
                 android:text="Request Item"
                 android:id="@+id/request_item_button"/>
