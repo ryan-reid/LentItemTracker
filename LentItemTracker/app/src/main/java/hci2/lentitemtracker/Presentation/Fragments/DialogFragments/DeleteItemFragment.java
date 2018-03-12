@@ -7,11 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 import hci2.lentitemtracker.Persistence.UserItemList;
-import hci2.lentitemtracker.R;
-
-/**
- * Created by mattfoderaro on 2018-02-27.
- */
 
 public class DeleteItemFragment extends DialogFragment {
 
