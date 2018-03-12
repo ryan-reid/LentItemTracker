@@ -16,6 +16,7 @@ import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.R;
+import hci2.lentitemtracker.Utilities.Util;
 
 public class RequestItemPopUpFragment extends DialogFragment {
 
@@ -68,6 +69,7 @@ public class RequestItemPopUpFragment extends DialogFragment {
                 Toast.makeText(getContext(), "Item has been requested", Toast.LENGTH_LONG).show();
                 dataModels.get(clickPosition).setStatus(ItemStatus.PENDING);
                 UserItemList.addToRequestList(model);
+                Util.refreshData(getActivity(), 0);
                 getDialog().dismiss();
 
             }

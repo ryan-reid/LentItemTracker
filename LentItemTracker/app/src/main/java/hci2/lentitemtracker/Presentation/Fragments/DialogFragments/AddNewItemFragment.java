@@ -21,6 +21,7 @@ import java.io.IOException;
 import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
+import hci2.lentitemtracker.Presentation.Activities.MainActivity;
 import hci2.lentitemtracker.R;
 
 public class AddNewItemFragment extends DialogFragment {
@@ -111,11 +112,13 @@ public class AddNewItemFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 UserItemList.getInstance().addItemToUserList(dataModel);
+                MainActivity activity = (MainActivity) getActivity();
+                activity.resetData(0);
                 getDialog().dismiss();
+
             }
         });
 
     }
-
 
 }

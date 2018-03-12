@@ -2,10 +2,12 @@ package hci2.lentitemtracker.Presentation.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 
@@ -27,7 +29,7 @@ import hci2.lentitemtracker.adapters.MultiTabPageAdapter;
 import hci2.lentitemtracker.R;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     MultiTabPageAdapter pageAdapter;
     ViewPager viewPager;
     TabLayout tabLayout;
@@ -68,6 +70,12 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }
         );
+
+    }
+
+    public void resetData(int calledFrom) {
+        viewPager.setAdapter(pageAdapter);
+        viewPager.setCurrentItem(calledFrom);
     }
 
     private void addNewItem() {
@@ -75,6 +83,7 @@ public class MainActivity extends AppCompatActivity{
         FragmentManager fm = this.getSupportFragmentManager();
         frag.show(fm, "addNewItemFragment");
     }
+
 
 
     @Override
@@ -169,4 +178,5 @@ public class MainActivity extends AppCompatActivity{
         }
         super.onBackPressed();
     }
+
 }

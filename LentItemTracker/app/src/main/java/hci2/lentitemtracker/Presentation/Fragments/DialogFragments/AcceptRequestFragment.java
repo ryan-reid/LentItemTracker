@@ -9,6 +9,8 @@ import android.support.v4.app.DialogFragment;
 import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
+import hci2.lentitemtracker.Presentation.Activities.MainActivity;
+import hci2.lentitemtracker.Utilities.Util;
 
 public class AcceptRequestFragment extends DialogFragment {
 
@@ -31,6 +33,7 @@ public class AcceptRequestFragment extends DialogFragment {
                 ItemDataModel item = UserItemList.getItemByGuid(guid);
                 UserItemList.removeItemWithGuid(guid);
                 item.setStatus(ItemStatus.LENT);
+                Util.refreshData(getActivity(), 3);
                 UserItemList.addItemToLentList(item);
 
             }
@@ -43,6 +46,8 @@ public class AcceptRequestFragment extends DialogFragment {
                 .create();
 
     }
+
+
 
 
 }

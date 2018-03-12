@@ -72,12 +72,13 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
         if(dataModel.getImage() != null) {
             viewHolder.thumbnail.setImageBitmap(dataModel.getImage());
         }
-        viewHolder.itemTitle.setText(dataModel.getTitle());
-        viewHolder.itemOwner.setText(dataModel.getOwner());
-        viewHolder.duration.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));
-        viewHolder.itemStatus.setText(dataModel.getStatus().toString());
-        viewHolder.thumbnail.setOnClickListener(this);
-        viewHolder.thumbnail.setTag(position);
+
+            viewHolder.itemTitle.setText(dataModel.getTitle());
+            viewHolder.itemOwner.setText(dataModel.getOwner());
+            viewHolder.duration.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));
+            viewHolder.itemStatus.setText(dataModel.getStatus().toString());
+            viewHolder.thumbnail.setOnClickListener(this);
+            viewHolder.thumbnail.setTag(position);
         return result;
     }
 
