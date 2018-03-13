@@ -48,7 +48,7 @@
                 android:layout_height="match_parent">
 
                 <CheckBox
-                    android:id="@+id/item_detail_pickup"
+                    android:id="@+id/item_detail_pickupX"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -59,7 +59,7 @@
 
 
             <TextView
-                android:id="@+id/item_detail_description"
+                android:id="@+id/item_detail_descriptionX"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:ems="12"
@@ -68,7 +68,7 @@
                 android:padding="4dp" />
 
             <ImageView
-                android:id="@+id/item_detail_image"
+                android:id="@+id/item_detail_imageX"
                 android:layout_width="236dp"
                 android:layout_height="238dp"
                 android:layout_gravity="center"

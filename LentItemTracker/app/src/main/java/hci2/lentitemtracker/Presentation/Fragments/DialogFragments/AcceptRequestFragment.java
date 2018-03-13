@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -46,6 +49,7 @@ public class AcceptRequestFragment extends DialogFragment {
         super.onStart();
         setupAcceptButton();
         setupDeclineButton();
+        setupPage();
     }
 
     private void setupAcceptButton() {
@@ -67,6 +71,32 @@ public class AcceptRequestFragment extends DialogFragment {
     }
 
     private void setupDeclineButton() {
+        Button declineButton = (Button)getDialog().findViewById(R.id.decline_item_button);
+        declineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ItemDataModel item = UserItemList.getItemByGuid(guid);
+                UserItemList.removeItemWithGuid(guid);
+                Util.refreshData(getActivity(), 3);
+                dismiss();
+            }
+        });
+
+    }
+
+    private void setupPage() {
+        ItemDataModel item = UserItemList.getItemByGuid(guid);
+
+        TextView message = (TextView)getDialog().findViewById(R.id.item_detail_descriptionX);
+        CheckBox checkBox = (CheckBox)getDialog().findViewById(R.id.item_detail_pickupX);
+
+        message.setText("I really need to borrow your item!");
+        checkBox.setChecked(true);
+        checkBox.setClickable(false);
+
+        ImageView image = (ImageView)getDialog().findViewById(R.id.item_detail_imageX);
+        image.setImageBitmap(item.getImage());
+
 
     }
 
