@@ -3,12 +3,16 @@ package hci2.lentitemtracker.Presentation.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AcceptRequestFragment;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.CancelRequestFragment;
 import hci2.lentitemtracker.adapters.RequestAdapter;
 
 public class RequestTabFragment extends InventoryFragment {
@@ -23,17 +27,30 @@ public class RequestTabFragment extends InventoryFragment {
 
     @Override
     public void itemClickListener(AdapterView<?> parent, View view, int position, long id){
-        addNewItem(UserItemList.getRequestItems().get(position).getId());
+        if(UserItemList.getRequestItems().get(position).getStatus().name().equals(ItemStatus.INCOMING.name())) {
+            promptIncoming(UserItemList.getRequestItems().get(position).getId());
+        } else {
+            promptOutgoing(UserItemList.getRequestItems().get(position).getId());
+        }
+
     }
 
 
-    private void addNewItem(String guid) {
+    private void promptIncoming(String guid) {
         AcceptRequestFragment frag = new AcceptRequestFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("guidFromRequestTab", guid);
+        bundle.putString("guid", guid);
         frag.setArguments(bundle);
         frag.show(getFragmentManager(), "addNewItemFragment");
     }
 
-
+    private void promptOutgoing(String guid) {
+        CancelRequestFragment frag = new CancelRequestFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("guid", guid);
+        frag.setArguments(bundle);
+        frag.show(getFragmentManager(), "promptIncoming");
+    }
 }
+
+

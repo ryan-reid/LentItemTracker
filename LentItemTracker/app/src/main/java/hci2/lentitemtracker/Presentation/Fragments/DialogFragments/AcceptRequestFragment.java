@@ -3,18 +3,27 @@ package hci2.lentitemtracker.Presentation.Fragments.DialogFragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.View;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
-import hci2.lentitemtracker.Presentation.Activities.MainActivity;
+import hci2.lentitemtracker.R;
 import hci2.lentitemtracker.Utilities.Util;
+
 
 public class AcceptRequestFragment extends DialogFragment {
 
     private String guid;
+
+    ArrayList<ItemDataModel> requestData = UserItemList.getRequestItems();
+
 
     public AcceptRequestFragment() {
     };
@@ -24,28 +33,44 @@ public class AcceptRequestFragment extends DialogFragment {
         Bundle bundle = this.getArguments();
 
         if (bundle != null) {
-            guid = bundle.getString("guidFromRequestTab");
+            guid = bundle.getString("guid");
         }
 
-        return new AlertDialog.Builder(getActivity()).setTitle("Accept Item Request?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ItemDataModel item = UserItemList.getItemByGuid(guid);
-                UserItemList.removeItemWithGuid(guid);
-                item.setStatus(ItemStatus.LENT);
-                Util.refreshData(getActivity(), 3);
-                UserItemList.addItemToLentList(item);
+        return new AlertDialog.Builder(getActivity())
+                .setView(R.layout.request_popup).create();
+    }
 
-            }
-        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        setupAcceptButton();
+        setupDeclineButton();
+    }
+
+    private void setupAcceptButton() {
+        Button acceptButton = (Button)getDialog().findViewById(R.id.accept_item_button);
+
+        acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onClick(View v) {
+
+                ItemDataModel item = UserItemList.getItemByGuid(guid);
+                item.setStatus(ItemStatus.LENT);
+                UserItemList.removeItemWithGuid(guid);
+                UserItemList.addItemToLentList(item);
+                Util.refreshData(getActivity(), 3);
+                dismiss();
             }
-        })
-                .create();
+        });
 
     }
+
+    private void setupDeclineButton() {
+
+    }
+
+
 
 
 

@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
+import hci2.lentitemtracker.Utilities.Util;
 import hci2.lentitemtracker.adapters.MultiTabPageAdapter;
 import hci2.lentitemtracker.R;
 
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.data_refresh_item:
                 UserItemList.refreshData();
+                Util.refreshData(this, 0);
                 return true;
         }
 
