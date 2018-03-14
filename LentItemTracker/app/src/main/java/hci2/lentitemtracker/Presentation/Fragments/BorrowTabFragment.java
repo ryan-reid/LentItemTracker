@@ -14,9 +14,10 @@ public class BorrowTabFragment extends InventoryFragment {
     private static ItemAdapter itemAdapter;
 
     public ArrayAdapter createArrayAdapter(){
-        itemAdapter = new RequestAdapter(UserItemList.getInstance().getBorrowedItems(), getContext(), getFragmentManager());
+        itemAdapter = new ItemAdapter(UserItemList.getInstance().getBorrowedItems(), getContext());
         return itemAdapter;
     }
+
 
     @Override
     public void itemClickListener(AdapterView<?> parent, View view, int position, long id){

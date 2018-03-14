@@ -2,15 +2,12 @@ package hci2.lentitemtracker.Presentation.Activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
-
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -23,6 +20,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
 import hci2.lentitemtracker.Utilities.Util;
@@ -126,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
                 UserItemList.refreshData();
                 Util.refreshData(this, 0);
                 return true;
+            case R.id.approve_all_borrow_requests:
+                UserItemList.approveAllOutgoingRequests();
+                Util.refreshData(this, 1);
         }
 
         return super.onOptionsItemSelected(item);

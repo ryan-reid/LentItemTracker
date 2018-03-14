@@ -24,6 +24,18 @@ public class UserItemList {
     private static ArrayList<ItemDataModel> borrowedItems = new ArrayList<ItemDataModel>();
 
 
+    public static void approveAllOutgoingRequests() {
+        for (int i = 0; i < requestItems.size(); i++) {
+            if(requestItems.get(i).getStatus().equals(ItemStatus.PENDING)) {
+                ItemDataModel item = requestItems.get(i);
+                removeItemWithGuid(item.getId());
+                item.setStatus(ItemStatus.BORROWED);
+                borrowedItems.add(item);
+            }
+        }
+
+    }
+
     public static UserItemList getInstance(Context context) {
         if(Instance == null) {
             Instance = new UserItemList();
