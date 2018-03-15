@@ -84,7 +84,7 @@ public class RequestItemPopUpFragment extends DialogFragment {
                 dataModels.get(clickPosition).setStatus(ItemStatus.PENDING);
 
 
-                model.setNumDaysAvailableForLending(getDays());
+                model.setNumDaysWanted(getDays());
                 UserItemList.addToRequestList(model);
                 Util.refreshData(getActivity(), 0);
                 getDialog().dismiss();

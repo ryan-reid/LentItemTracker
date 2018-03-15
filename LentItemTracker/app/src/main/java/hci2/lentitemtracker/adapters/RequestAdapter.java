@@ -62,7 +62,7 @@ public class RequestAdapter extends ItemAdapter {
 
         viewHolder.itemTitle.setText(dataModel.getTitle());
         viewHolder.itemRequester.setText(dataModel.getOwner());
-        viewHolder.numberOfDays.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));
+        viewHolder.numberOfDays.setText(String.format("%d days", dataModel.getNumDaysWanted()));
         viewHolder.itemImage.setImageBitmap(dataModel.getImage());
 
         if(dataModel.getStatus().name().equals(ItemStatus.INCOMING.name())){

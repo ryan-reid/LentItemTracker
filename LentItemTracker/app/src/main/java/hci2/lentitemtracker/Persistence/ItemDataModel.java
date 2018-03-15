@@ -13,6 +13,7 @@ public class ItemDataModel {
     private int numDaysAvailableForLending;
     private ItemStatus status;
     private String id;
+    private int numDaysWanted;
 
     public ItemDataModel(Bitmap image, String title, String description, String owner, int numDaysAvailableForLending, ItemStatus status) {
         this.image = image;
@@ -24,8 +25,18 @@ public class ItemDataModel {
         this.id = java.util.UUID.randomUUID().toString();
     }
 
+    public ItemDataModel(Bitmap image, String title, String description, String owner, ItemStatus status, int numDaysWanted) {
+        this.image = image;
+        this.description = description;
+        this.title = title;
+        this.owner = owner;
+        this.numDaysWanted = numDaysWanted;
+        this.status = status;
+        this.id = java.util.UUID.randomUUID().toString();
+    }
+
     public ItemDataModel(Bitmap image, String title, String description, int numDaysAvailableForLending, ItemStatus status) {
-        this(image, title, description, "Stu Dent", numDaysAvailableForLending, status);
+        this(image, title, description, "Jim James", numDaysAvailableForLending, status);
     }
 
     public ItemDataModel(String title, String description, String owner, int numDaysAvailableForLending, ItemStatus available){
@@ -90,5 +101,13 @@ public class ItemDataModel {
     }
 
     public void setStatus(ItemStatus status) { this.status = status;}
+
+    public int getNumDaysWanted() {
+        return numDaysWanted;
+    }
+
+    public void setNumDaysWanted(int numDaysWanted) {
+        this.numDaysWanted = numDaysWanted;
+    }
 
 }

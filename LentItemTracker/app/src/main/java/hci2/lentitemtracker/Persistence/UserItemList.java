@@ -137,8 +137,8 @@ public class UserItemList {
 
     private static ArrayList<ItemDataModel> createSampleRequestItems(){
         ArrayList<ItemDataModel> dataModels = new ArrayList<>();
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camerea", "Professional System", "Mark Dent", 30, ItemStatus.INCOMING));
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.bicycle_item),"Bicycle", "Lightweight Mountain Bike", "John Dent", 7, ItemStatus.INCOMING));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camerea", "Professional System", "Mark Dent", ItemStatus.INCOMING,30));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.bicycle_item),"Bicycle", "Lightweight Mountain Bike", "John Dent", ItemStatus.INCOMING, 7));
         return dataModels;
     }
 

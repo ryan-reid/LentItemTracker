@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AcceptRequestFragment;
+import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.RequestItemBackFragment;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.RequestItemPopUpFragment;
 import hci2.lentitemtracker.adapters.ItemAdapter;
 import hci2.lentitemtracker.adapters.RequestAdapter;
@@ -26,12 +27,12 @@ public class LentTabFragment extends InventoryFragment {
 
     public void itemClickListener(AdapterView<?> parent, View view, int position, long id){
 
-        RequestItemPopUpFragment frag = new RequestItemPopUpFragment();
+        RequestItemBackFragment frag = new RequestItemBackFragment();
         FragmentManager fm = getFragmentManager();
-        Bundle itemRequestPopup = new Bundle();
+        Bundle bundle = new Bundle();
 
-        itemRequestPopup.putSerializable("clickPosition", position);
-        frag.setArguments(itemRequestPopup);
+        bundle.putInt("index", position);
+        frag.setArguments(bundle);
         frag.show(fm, "addNewItemFragment");
     }
 }

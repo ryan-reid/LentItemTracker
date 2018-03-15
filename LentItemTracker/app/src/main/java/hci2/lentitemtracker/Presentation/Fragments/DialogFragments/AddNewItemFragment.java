@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -111,10 +112,11 @@ public class AddNewItemFragment extends DialogFragment {
         okButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                UserItemList.getInstance().addItemToUserList(dataModel);
+                UserItemList.addItemToUserList(dataModel);
                 MainActivity activity = (MainActivity) getActivity();
                 activity.resetData(0);
                 getDialog().dismiss();
+                Toast.makeText(getContext(), "New item has been added", Toast.LENGTH_LONG).show();
 
             }
         });

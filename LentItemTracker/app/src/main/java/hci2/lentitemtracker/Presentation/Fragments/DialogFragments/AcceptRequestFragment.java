@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,7 @@ public class AcceptRequestFragment extends DialogFragment {
                 UserItemList.addItemToLentList(item);
                 Util.refreshData(getActivity(), 3);
                 dismiss();
+                Toast.makeText(getContext(), "Item request accepted", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -79,6 +81,7 @@ public class AcceptRequestFragment extends DialogFragment {
                 UserItemList.removeItemWithGuid(guid);
                 Util.refreshData(getActivity(), 3);
                 dismiss();
+                Toast.makeText(getContext(), "Item request declined", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -90,7 +93,7 @@ public class AcceptRequestFragment extends DialogFragment {
         TextView message = (TextView)getDialog().findViewById(R.id.item_detail_descriptionX);
         CheckBox checkBox = (CheckBox)getDialog().findViewById(R.id.item_detail_pickupX);
 
-        message.setText("I really need to borrow your item!");
+        message.setText("I really need to borrow your item! If it would be possible, I would like to use it between the dates below.");
         checkBox.setChecked(true);
         checkBox.setClickable(false);
 
