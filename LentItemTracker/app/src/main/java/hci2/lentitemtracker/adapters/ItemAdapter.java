@@ -20,6 +20,7 @@ import hci2.lentitemtracker.R;
 public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
     private ArrayList<ItemDataModel> dataModels;
     private Context context;
+    private String calledFrom = "neither";
 
     //View cache
     private static class ViewHolder {
@@ -34,6 +35,13 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
         super(context, R.layout.single_item_list_view, dataModels);
         this.dataModels = dataModels;
         this.context = context;
+    }
+
+    public ItemAdapter(ArrayList<ItemDataModel> dataModels, Context context, String calledFrom){
+        super(context, R.layout.single_item_list_view, dataModels);
+        this.dataModels = dataModels;
+        this.context = context;
+        this.calledFrom = calledFrom;
     }
 
     public ItemAdapter(Context context){
@@ -75,7 +83,12 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
 
             viewHolder.itemTitle.setText(dataModel.getTitle());
             viewHolder.itemOwner.setText(dataModel.getOwner());
+        if(calledFrom.equals("borrowed") || calledFrom.equals("lent")) {
+            viewHolder.duration.setText(String.format("%d days", dataModel.getNumDaysWanted()));
+
+        } else {
             viewHolder.duration.setText(String.format("%d days", dataModel.getNumDaysAvailableForLending()));
+        }
             viewHolder.itemStatus.setText(dataModel.getStatus().toString());
             viewHolder.thumbnail.setOnClickListener(this);
             viewHolder.thumbnail.setTag(position);

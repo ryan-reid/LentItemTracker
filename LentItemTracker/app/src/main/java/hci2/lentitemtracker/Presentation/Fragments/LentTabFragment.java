@@ -21,7 +21,7 @@ public class LentTabFragment extends InventoryFragment {
     private static ItemAdapter itemAdapter;
 
     public ArrayAdapter createArrayAdapter(){
-        itemAdapter = new ItemAdapter(UserItemList.getInstance().getLentItems(), getContext());
+        itemAdapter = new ItemAdapter(UserItemList.getInstance().getLentItems(), getContext(), "lent");
         return itemAdapter;
     }
 
