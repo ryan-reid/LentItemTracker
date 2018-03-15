@@ -86,24 +86,66 @@
                 android:lines="4"
                 android:padding="4dp" />
 
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <EditText
+                    android:id="@+id/startDate"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/startDateTitle"
+                    android:ems="8"
+                    android:inputType="date" />
+
+                <TextView
+                    android:id="@+id/startDateTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Start Date:"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/endDateTitle"
+                    android:layout_marginTop="13dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/startDateTitle"
+                    android:text="End Date:"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/endDate"
+                    android:layout_below="@+id/startDate"
+                    android:layout_toRightOf="@id/endDateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="8"
+                    android:inputType="date" />
+            </RelativeLayout>
+
+
             <ImageView
                 android:id="@+id/item_detail_image"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="196dp"
+                android:layout_height="175dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="4dp"
                 app:srcCompat="@drawable/backpack" />
 
             <Button
+                android:id="@+id/request_item_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="4dp"
                 android:backgroundTint="@color/colorPrimary"
-                android:layout_gravity="center"
                 android:padding="4dp"
-                android:textColor="@color/cardview_light_background"
                 android:text="Request Item"
-                android:id="@+id/request_item_button"/>
+                android:textColor="@color/cardview_light_background" />
         </LinearLayout>
 
     </FrameLayout>

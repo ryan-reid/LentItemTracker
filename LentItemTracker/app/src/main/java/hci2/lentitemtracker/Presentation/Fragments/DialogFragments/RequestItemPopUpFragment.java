@@ -1,16 +1,22 @@
 package hci2.lentitemtracker.Presentation.Fragments.DialogFragments;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
@@ -20,6 +26,10 @@ import hci2.lentitemtracker.Utilities.Util;
 
 public class RequestItemPopUpFragment extends DialogFragment {
 
+
+    EditText startDate;
+    EditText endDate;
+    final Calendar myCalendar = Calendar.getInstance();
 
 
 
@@ -72,7 +82,83 @@ public class RequestItemPopUpFragment extends DialogFragment {
                 Util.refreshData(getActivity(), 0);
                 getDialog().dismiss();
 
+
+            }
+        });
+
+        setupStartDate();
+        setupEndDate();
+
+        }
+
+        private void setupStartDate() {
+            startDate = (EditText) this.getDialog().findViewById(R.id.startDate);
+
+
+            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateLabelStart();
+                }
+
+            };
+
+            startDate.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    new DatePickerDialog(getDialog().getContext(), date, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            });
+        }
+
+    private void setupEndDate() {
+        endDate = (EditText) this.getDialog().findViewById(R.id.endDate);
+
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabelEnd();
+            }
+
+        };
+
+        endDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getDialog().getContext(), date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
-}
+
+
+    private void updateLabelStart() {
+        String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        startDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+
+    private void updateLabelEnd() {
+        String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        endDate.setText(sdf.format(myCalendar.getTime()));
+    }
+    }
+
