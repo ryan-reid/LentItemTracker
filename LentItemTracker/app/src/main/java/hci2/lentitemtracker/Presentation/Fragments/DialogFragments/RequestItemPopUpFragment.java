@@ -13,9 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
@@ -47,6 +49,7 @@ public class RequestItemPopUpFragment extends DialogFragment {
         TextView itemDescription;
         TextView itemStatus;
         ImageView itemImage;
+        Integer numDaysAvailableForLending;
 
     }
 
@@ -63,6 +66,7 @@ public class RequestItemPopUpFragment extends DialogFragment {
         holder.itemImage = (ImageView) this.getDialog().findViewById(R.id.item_detail_image);
         holder.itemStatus = (TextView) this.getDialog().findViewById(R.id.StatusValue);
 
+
         holder.itemName.setText(model.getTitle());
         holder.itemOwner.setText(model.getOwner());
         holder.itemDescription.setText(model.getDescription());
@@ -78,6 +82,9 @@ public class RequestItemPopUpFragment extends DialogFragment {
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Item has been requested", Toast.LENGTH_LONG).show();
                 dataModels.get(clickPosition).setStatus(ItemStatus.PENDING);
+
+
+                model.setNumDaysAvailableForLending(getDays());
                 UserItemList.addToRequestList(model);
                 Util.refreshData(getActivity(), 0);
                 getDialog().dismiss();
@@ -89,6 +96,27 @@ public class RequestItemPopUpFragment extends DialogFragment {
         setupStartDate();
         setupEndDate();
 
+        }
+
+        private int getDays() {
+            String startDateX = ((EditText) this.getDialog().findViewById(R.id.startDate)).getText().toString();
+            String endDateX = ((EditText) this.getDialog().findViewById(R.id.endDate)).getText().toString();
+            int daysAvailable = 0;
+
+            SimpleDateFormat myFormat = new SimpleDateFormat("MM/dd/yy");
+
+            try {
+                Date date1 = myFormat.parse(startDateX);
+                Date date2 = myFormat.parse(endDateX);
+
+                daysAvailable = date2.getDate() - date1.getDate();
+
+
+            } catch(ParseException e) {
+                e.printStackTrace();
+            }
+
+            return daysAvailable;
         }
 
         private void setupStartDate() {
