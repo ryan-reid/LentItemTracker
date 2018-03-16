@@ -1,107 +1,187 @@
 package hci2.lentitemtracker.Presentation.Activities;
 
-import android.net.Uri;
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import hci2.lentitemtracker.Persistence.IncomingRequestsList;
-import hci2.lentitemtracker.Presentation.Formatting.BottomNavigationViewHelper;
+import java.util.ArrayList;
+
+import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AddNewItemFragment;
-import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.ConfirmIncomingRequest;
-import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeclineIncomingRequest;
-import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.DeleteItemFragment;
-import hci2.lentitemtracker.Presentation.Fragments.HomePageFragment;
-import hci2.lentitemtracker.Presentation.Fragments.IncomingRequestsFragment;
-import hci2.lentitemtracker.Presentation.Fragments.MyItemsFragment;
-import hci2.lentitemtracker.Presentation.Fragments.OutgoingRequestsFragment;
-import hci2.lentitemtracker.Presentation.Fragments.SearchFragment;
+import hci2.lentitemtracker.Utilities.Util;
+import hci2.lentitemtracker.adapters.MultiTabPageAdapter;
 import hci2.lentitemtracker.R;
 
-public class MainActivity extends AppCompatActivity implements AddNewItemFragment.newItemInterface, DeleteItemFragment.deleteFragmentInterface, ConfirmIncomingRequest.confirmIncomingRequestInterface, DeclineIncomingRequest.declineIncomingRequestInterface{
 
-    private TextView mTextMessage;
-    FragmentManager fragmentManager;
-    AddNewItemFragment.newItemInterface closeRefreshInterface;
-
-    private static final String OUTGOING_REQUESTS_TAG = "Outgoing Requests Fragment";
-    private static final String INCOMING_REQUESTS_TAG = "Incoming Requests Fragment";
-    private static final String MY_ITEMS_TAG = "My Items Fragment";
-    private static final String SEARCH_TAG = "Search Fragment";
-    private static final String HOME_PAGE = "Home Page";
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_outgoing_requests:
-                    mTextMessage.setText(R.string.outgoing_requests);
-                    fragmentManager.beginTransaction().replace(R.id.container, new OutgoingRequestsFragment(), OUTGOING_REQUESTS_TAG ).commit();
-                    return true;
-                case R.id.navigation_incoming_requests:
-                    mTextMessage.setText(R.string.incoming_requests);
-                    fragmentManager.beginTransaction().replace(R.id.container, new IncomingRequestsFragment(), INCOMING_REQUESTS_TAG).commit();
-                    return true;
-                case R.id.navigation_backpack:
-                    mTextMessage.setText(R.string.backpack);
-                    fragmentManager.beginTransaction().replace(R.id.container, new MyItemsFragment(), MY_ITEMS_TAG).commit();
-                    return true;
-                case R.id.navigation_search:
-                    mTextMessage.setText(R.string.search);
-                    fragmentManager.beginTransaction().replace(R.id.container, new SearchFragment(), SEARCH_TAG).commit();
-                    return true;
-                case R.id.home_page:
-                    mTextMessage.setText("Home Page");
-                    fragmentManager.beginTransaction().replace(R.id.container, new HomePageFragment(), HOME_PAGE).commit();
-                    return true;
-
-            }
-            return false;
-        }
-
-    };
+public class MainActivity extends AppCompatActivity {
+    MultiTabPageAdapter pageAdapter;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+    private MenuItem searchMenu;
+    private boolean isSearchOpen = false;
+    private EditText searchText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        IncomingRequestsList.setContext(this);
-
         setContentView(R.layout.activity_main);
-        fragmentManager = getSupportFragmentManager();
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        UserItemList.setContext(this);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, new SearchFragment()).commit();
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        pageAdapter = new MultiTabPageAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pageAdapter);
+
+        tabLayout = (TabLayout) findViewById(R.id.main_tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+        final Activity activity = this;
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_menu_my_items);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.bottom_menu_new_item:
+                                addNewItem();
+                        }
+                        return false;
+                    }
+                }
+        );
+
+    }
+
+    public void resetData(int calledFrom) {
+        viewPager.setAdapter(pageAdapter);
+        viewPager.setCurrentItem(calledFrom);
+    }
+
+    private void addNewItem() {
+        AddNewItemFragment frag = new AddNewItemFragment();
+        FragmentManager fm = this.getSupportFragmentManager();
+        frag.show(fm, "addNewItemFragment");
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.tool_bar_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.app_bar_search);
+
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return true;
     }
 
     @Override
-    public void myItemsRefresh(String guid) {
-        MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
-        itemFragment.refreshList();
+    public boolean onPrepareOptionsMenu(Menu menu){
+        searchMenu = menu.findItem(R.id.app_bar_search);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
-    public void onCloseRefreshList() {
-        MyItemsFragment itemFragment = (MyItemsFragment) fragmentManager.findFragmentByTag(MY_ITEMS_TAG);
-        itemFragment.refreshList();
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        switch(item.getItemId()) {
+            case R.id.app_bar_search:
+                handleSearchMenu();
+                return true;
+            case R.id.data_refresh_item:
+                UserItemList.refreshData();
+                Util.refreshData(this, 0);
+                return true;
+            case R.id.approve_all_borrow_requests:
+                UserItemList.approveAllOutgoingRequests();
+                Util.refreshData(this, 1);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void handleSearchMenu(){
+        ActionBar actionBar = getSupportActionBar();
+        InputMethodManager inputMethodManager= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(isSearchOpen){
+            actionBar.setDisplayShowCustomEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+
+
+            inputMethodManager.hideSoftInputFromWindow(searchText.getWindowToken(), 0);
+
+            searchMenu.setIcon(getResources().getDrawable(R.drawable.search));
+
+            isSearchOpen = false;
+        }else{
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setCustomView(R.layout.search_bar);
+            actionBar.setDisplayShowTitleEnabled(true);
+
+            searchText = (EditText) actionBar.getCustomView().findViewById(R.id.search_text);
+            searchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                    if(i == EditorInfo.IME_ACTION_SEARCH){
+                        query_data_base();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+            searchText.requestFocus();
+            inputMethodManager.showSoftInput(searchText, InputMethodManager.SHOW_IMPLICIT);
+
+            searchMenu.setIcon(getResources().getDrawable(R.drawable.search));
+
+            isSearchOpen = true;
+        }
+    }
+    // To filter list items
+    public void query_data_base(){
+
     }
 
     @Override
-    public void refreshIncomingRequestList() {
-        IncomingRequestsFragment itemFragment = (IncomingRequestsFragment) fragmentManager.findFragmentByTag(INCOMING_REQUESTS_TAG);
-        itemFragment.refreshList();
-
+    public void onBackPressed(){
+        if(isSearchOpen) {
+            handleSearchMenu();
+        }
+        super.onBackPressed();
     }
+
 }

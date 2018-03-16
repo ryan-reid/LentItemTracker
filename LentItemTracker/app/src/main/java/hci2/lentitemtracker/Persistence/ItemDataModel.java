@@ -3,23 +3,46 @@ package hci2.lentitemtracker.Persistence;
 
 import android.graphics.Bitmap;
 
-public class ItemDataModel {
+import java.util.ArrayList;
 
+public class ItemDataModel {
     private Bitmap image;
     private String description;
+    private String owner;
     private String title;
     private int numDaysAvailableForLending;
-    private boolean available;
+    private ItemStatus status;
     private String id;
+    private int numDaysWanted;
 
-    public ItemDataModel(Bitmap image, String title, String description, int numDaysAvailableForLending, boolean available) {
+    public ItemDataModel(Bitmap image, String title, String description, String owner, int numDaysAvailableForLending, ItemStatus status) {
         this.image = image;
         this.description = description;
         this.title = title;
+        this.owner = owner;
         this.numDaysAvailableForLending = numDaysAvailableForLending;
-        this.available = available;
+        this.status = status;
         this.id = java.util.UUID.randomUUID().toString();
     }
+
+    public ItemDataModel(Bitmap image, String title, String description, String owner, ItemStatus status, int numDaysWanted) {
+        this.image = image;
+        this.description = description;
+        this.title = title;
+        this.owner = owner;
+        this.numDaysWanted = numDaysWanted;
+        this.status = status;
+        this.id = java.util.UUID.randomUUID().toString();
+    }
+
+    public ItemDataModel(Bitmap image, String title, String description, int numDaysAvailableForLending, ItemStatus status) {
+        this(image, title, description, "Jim James", numDaysAvailableForLending, status);
+    }
+
+    public ItemDataModel(String title, String description, String owner, int numDaysAvailableForLending, ItemStatus available){
+        this(null, title, description, owner, numDaysAvailableForLending, available);
+    }
+
 
     public Bitmap getImage() {
         return image;
@@ -53,16 +76,38 @@ public class ItemDataModel {
         this.numDaysAvailableForLending = numDaysAvailableForLending;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public ItemStatus isAvailable() {
+        return status;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setAvailable(ItemStatus status) {
+        this.status = status;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setOwner(String owner){
+        this.owner = owner;
+    }
+
+    public String getOwner(){
+        return this.owner;
+    }
+
+    public ItemStatus getStatus(){
+        return this.status;
+    }
+
+    public void setStatus(ItemStatus status) { this.status = status;}
+
+    public int getNumDaysWanted() {
+        return numDaysWanted;
+    }
+
+    public void setNumDaysWanted(int numDaysWanted) {
+        this.numDaysWanted = numDaysWanted;
     }
 
 }

@@ -2,30 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/search"
-        android:title="@string/search" />
+        android:id="@+id/bottom_menu_new_item"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/add_new_item"/>
 
     <item
-        android:id="@+id/navigation_outgoing_requests"
-        android:icon="@drawable/outbound_arrow"
-        android:title="@string/outgoing_requests" />
+        android:id="@+id/bottom_menu_my_items"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home" />
 
     <item
-        android:id="@+id/home_page"
-        android:icon="@drawable/homepage"
-        android:title="Home" />
-
-    <item
-        android:id="@+id/navigation_incoming_requests"
-        android:icon="@drawable/inbound_arrow"
-        android:title="@string/incoming_requests"/>
-
-    <item
-        android:id="@+id/navigation_backpack"
-        android:icon="@drawable/backpack"
-        android:title="@string/backpack" />
-
-
+        android:id="@+id/bottom_menu_profile"
+        android:icon="@drawable/icon_person"
+        android:title="@string/profile"/>
 
 </menu>

@@ -6,14 +6,16 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Activities.MainActivity;
 
-public class DeleteItemFragment extends DialogFragment {
+public class CancelRequestFragment extends DialogFragment {
 
     private String guid;
 
-    public DeleteItemFragment() {};
+    public CancelRequestFragment() {};
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -24,15 +26,23 @@ public class DeleteItemFragment extends DialogFragment {
             guid = bundle.getString("guid");
         }
 
-        return new AlertDialog.Builder(getActivity()).setTitle("Delete Item?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(getActivity()).setTitle("Rescind Request?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                ItemDataModel item = UserItemList.getItemByGuid(guid);
                 UserItemList.removeItemWithGuid(guid);
+                item.setStatus(ItemStatus.AVAILABLE);
+                UserItemList.addItemToUserList(item);
                 MainActivity activity = (MainActivity) getActivity();
-                activity.resetData(0);
+                activity.resetData(3);
 
             }
-        }).create();
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dismiss();
+            }
+        } ).create();
 
     }
 
