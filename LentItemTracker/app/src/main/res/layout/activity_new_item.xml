@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hci2.lentitemtracker.Presentation.Activities.NewItemActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_item_fragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Item Name"
+                android:textSize="24sp"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:inputType="textAutoComplete"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Item Owner"
+                android:textSize="24sp"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:inputType="textPersonName"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="For Pickup"
+                android:id="@+id/new_item_pickup"
+                android:textSize="24sp"
+                android:padding="4dp"
+                android:layout_margin="4dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:inputType="textImeMultiLine"
+                android:hint="Item Description"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:text="Save"
+                android:backgroundTint="@color/colorPrimary"
+                android:id="@+id/new_item_button"/>
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

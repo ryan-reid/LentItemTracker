@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LentItemTracker</string>
+    <string name="outgoing_requests">Outgoing</string>
+    <string name="incoming_requests">Incoming</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="setting">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="image_place_holder">TBD</string>
+    <string name="default_status">Available</string>
+    <string name="my_items">My Items</string>
+    <string name="data_refresh">Data Refresh</string>
+    <string name="add_new_item">Add Item</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

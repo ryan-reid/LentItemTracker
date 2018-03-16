@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/container_main_activity_2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="4dp">
+
+            <TextView
+                android:id="@+id/item_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requester:" />
+
+                <TextView
+                    android:id="@+id/item_detail_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Mike Pence"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/item_detail_pickupX"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:padding="4dp"
+                    android:text="Pickup" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/item_detail_descriptionX"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:ems="12"
+                android:hint="Description"
+                android:lines="4"
+                android:padding="4dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/startDateTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Start Date:" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/startDateTitle"
+                    android:layout_marginLeft="10dp"
+                    android:text="10/12/2018"/>
+
+                <TextView
+                    android:id="@+id/endDateTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/startDateTitle"
+                    android:text="End Date:" />
+
+                <TextView
+                    android:id="@+id/endDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/startDateTitle"
+                    android:layout_toEndOf="@+id/endDateTitle"
+                    android:layout_marginLeft="18dp"
+                    android:text="10/15/2018" />
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/item_detail_imageX"
+                android:layout_width="166dp"
+                android:layout_height="166dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                app:srcCompat="@drawable/backpack" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" >
+
+                <Button
+                    android:id="@+id/accept_item_button"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="36dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Accept"
+                    android:textColor="@color/cardview_light_background" />
+
+                <Button
+                    android:id="@+id/decline_item_button"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="27dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Decline"
+                    android:textColor="@color/cardview_light_background" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+</RelativeLayout>
