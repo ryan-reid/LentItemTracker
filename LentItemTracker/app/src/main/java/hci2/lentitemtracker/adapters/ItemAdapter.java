@@ -95,6 +95,10 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
         return result;
     }
 
+    public void removeItem(ItemDataModel item){
+        this.dataModels.remove(item);
+    }
+
     public ItemDataModel getItem(int position){
         return this.dataModels.get(position);
     }
