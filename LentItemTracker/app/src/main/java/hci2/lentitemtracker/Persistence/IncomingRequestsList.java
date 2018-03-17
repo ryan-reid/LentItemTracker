@@ -36,8 +36,10 @@ public class IncomingRequestsList {
         }
 
         public static void initIncomingRequestList() {
-            items.add(new ItemDataModel(BitmapFactory.decodeResource(context.getResources(), R.drawable.bicycle_item), "Bicycle", "My Bicycle", 5, true));
-            items.add(new ItemDataModel(BitmapFactory.decodeResource(context.getResources(), R.drawable.car_item), "Car", "My Car", 2, true));
+            items.add(new ItemDataModel(BitmapFactory.decodeResource(context.getResources(), R.drawable.bicycle_item),
+                    "Bicycle", "My Bicycle", 5, ItemStatus.AVAILABLE));
+            items.add(new ItemDataModel(BitmapFactory.decodeResource(context.getResources(), R.drawable.car_item), "Car", "My Car", 2,
+                    ItemStatus.AVAILABLE));
 
         }
 
@@ -54,8 +56,10 @@ public class IncomingRequestsList {
 
         public static void setAvailability(String guid, boolean available) {
             for(Iterator<ItemDataModel> iterator = items.iterator(); iterator.hasNext(); ) {
-                if(iterator.next().getId().equals(guid))
-                    iterator.next().setAvailable(false);
+                if(iterator.next().getId().equals(guid)) {
+                    ItemStatus status = available? ItemStatus.AVAILABLE:ItemStatus.BORROWED;
+                    iterator.next().setAvailable(status);
+                }
             }
 
         }

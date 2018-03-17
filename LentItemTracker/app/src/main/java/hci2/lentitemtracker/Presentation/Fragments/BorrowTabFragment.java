@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.adapters.ItemAdapter;
-import hci2.lentitemtracker.adapters.RequestAdapter;
+
 
 public class BorrowTabFragment extends InventoryFragment {
 
