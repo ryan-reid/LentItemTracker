@@ -127,10 +127,22 @@ public class UserItemList {
 
     private static ArrayList<ItemDataModel> createSampleData(){
         ArrayList<ItemDataModel> dataModels = new ArrayList<>();
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.controller_item), "Xbox Controller", "Xbox One Controller", "Stu Dent", 30, ItemStatus.AVAILABLE));
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.car_item),"Car", "Fast... and extra furious", "Stu Dent", 7, ItemStatus.AVAILABLE));
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.tractor_item),"John Deere Tractor", "Nothing drives like a Deere", "Stu Dent",5, ItemStatus.AVAILABLE));
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.chainsaw_item), "Chainsaw", "Black & Decker", "Stu Dent", 2, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.controller_item), "Xbox Controller", "Xbox One Controller", "Kevin Jones", 30, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.car_item),"Car", "Fast... and extra furious", "Drew Williams", 7, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.tractor_item),"John Deere Tractor", "Nothing drives like a Deere", "James Sharp",5, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.chainsaw_item), "Chainsaw", "Black & Decker", "Lebron Jones", 2, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.alarm_clock), "Alarm Clock", "Never snooze again with TimexPro", "Stephen Thyme", 7, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.book), "A Twist In Time", "A fantasy novel by No Won Ye", "James Softie", 14, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.calendar), "Calendar", "Track your events easier", "Kevin Durable", 31, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera), "Camera", "Never miss that perfect underwater shot while on vacation", "Isiah Tom", 14, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.car_battery), "Car Battery", "Antifreeze battery for the coldest winters", "Jack White", 7, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.christmas_tree), "Christmas Tree", "Santa would never skip your home with this", "J.R Henny", 14, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.coffee_pot), "Coffee Pot", "Best coffee pot for a coffee guru", "Rick Drooper", 4, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.mittens), "Mittens", "Comfy baking guaranteed", "Huncho Jack", 5, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.office_phone), "Office Phone", "Depot House supplies", "Quavo Smith", 4, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.personal_computer), "personal_computer", "Depot House PC", "Sean Jean", 1, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.sleigh), "Sleigh", "Chill winter essentials", "Wendy Will", 3, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.smart_phone), "TechNoid Phone", "TechNoid Mobile Ltd.", "Norm Swelly", 7, ItemStatus.AVAILABLE));
         return dataModels;
     }
 
