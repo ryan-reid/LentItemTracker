@@ -129,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.approve_all_borrow_requests:
                 UserItemList.approveAllOutgoingRequests();
                 Util.refreshData(this, 1);
+            case R.id.sort_request_by_item_title:
+                UserItemList.sortRequestItemsByName();
+                Util.refreshData(this, 3);
+                return true;
+            case R.id.sort_request_by_type:
+                UserItemList.sortRequestItemsByType();
+                Util.refreshData(this, 3);
         }
 
         return super.onOptionsItemSelected(item);

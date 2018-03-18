@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import hci2.lentitemtracker.R;
@@ -149,9 +151,28 @@ public class UserItemList {
 
     private static ArrayList<ItemDataModel> createSampleRequestItems(){
         ArrayList<ItemDataModel> dataModels = new ArrayList<>();
-        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camerea", "Professional System", "Mark Dent", ItemStatus.INCOMING,30));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camera", "Professional System", "Mark Dent", ItemStatus.INCOMING,30));
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.bicycle_item),"Bicycle", "Lightweight Mountain Bike", "John Dent", ItemStatus.INCOMING, 7));
         return dataModels;
+    }
+
+    public static void sortRequestItemsByName() {
+        Collections.sort(requestItems, new Comparator<ItemDataModel>() {
+            @Override
+            public int compare(ItemDataModel o1, ItemDataModel o2) {
+                return o1.getTitle().compareToIgnoreCase(o2.getTitle());
+                }
+            });
+        System.out.print(requestItems);
+    }
+
+    public static void sortRequestItemsByType() {
+        Collections.sort(requestItems, new Comparator<ItemDataModel>() {
+            @Override
+            public int compare(ItemDataModel o1, ItemDataModel o2) {
+                return o1.getStatus().toString().compareToIgnoreCase(o2.getStatus().toString());
+            }
+        });
     }
 
 }
