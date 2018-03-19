@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,9 +25,9 @@ public class InventoryTabFragment extends InventoryFragment {
                              ViewGroup container,
                              Bundle savedInstance){
         View rootView = inflater.inflate(resource, container, false);
-        this.listItemAdapter = new SwipeActionAdapter(this.createArrayAdapter());
+        listItemAdapter = new SwipeActionAdapter(this.createArrayAdapter());
         listView = (ListView) rootView.findViewById(R.id.main_activity_list);
-        this.listItemAdapter.setListView(listView);
+        listItemAdapter.setListView(listView);
         listView.setAdapter(listItemAdapter);
 
         // Set backgrounds for the swipe directions
@@ -67,8 +66,6 @@ public class InventoryTabFragment extends InventoryFragment {
                 }
             }
         });
-
         return rootView;
     }
-
 }

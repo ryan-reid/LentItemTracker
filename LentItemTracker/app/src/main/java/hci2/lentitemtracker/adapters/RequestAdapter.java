@@ -22,12 +22,10 @@ import hci2.lentitemtracker.R;
 
 public class RequestAdapter extends ItemAdapter {
     protected int resource = R.layout.request_item_row;
-    private FragmentManager fragmentManager;
 
 
     public RequestAdapter(ArrayList<ItemDataModel> dataModels, Context context, FragmentManager fm) {
         super(dataModels, context);
-        this.fragmentManager = fm;
     }
 
     private static class RequestRowView{
