@@ -98,7 +98,9 @@
                     android:layout_height="50dp"
                     android:layout_toRightOf="@id/startDateTitle"
                     android:ems="8"
-                    android:inputType="date" />
+                    android:inputType="date"
+                    android:clickable="true"
+                    android:focusable="false"/>
 
                 <TextView
                     android:id="@+id/startDateTitle"
@@ -115,16 +117,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/startDateTitle"
                     android:text="End Date:"
-                    android:textSize="25dp" />
+                    android:textSize="25dp"/>
 
                 <EditText
                     android:id="@+id/endDate"
                     android:layout_below="@+id/startDate"
                     android:layout_toRightOf="@id/endDateTitle"
                     android:layout_width="match_parent"
+                    android:focusable="false"
                     android:layout_height="wrap_content"
                     android:ems="8"
-                    android:inputType="date" />
+                    android:clickable="true"
+                    android:inputType="date"/>
             </RelativeLayout>
 
 
