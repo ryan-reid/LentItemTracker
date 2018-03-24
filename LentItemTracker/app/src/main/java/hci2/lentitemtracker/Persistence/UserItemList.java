@@ -145,6 +145,10 @@ public class UserItemList {
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.personal_computer), "personal_computer", "Depot House PC", "Sean Jean", 1, ItemStatus.AVAILABLE));
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.sleigh), "Sleigh", "Chill winter essentials", "Wendy Will", 3, ItemStatus.AVAILABLE));
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.smart_phone), "TechNoid Phone", "TechNoid Mobile Ltd.", "Norm Swelly", 7, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.blackberry), "Blackberry", "Blackberry phone for work", "Arthur Dent", 8, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.keypad_phone), "Nokia Phone", "Nokia key pad phone", "Will Smith", 3, ItemStatus.AVAILABLE));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.home_phone), "Home Phone", "Home phone with big buttons", "Tom Hardy", 5, ItemStatus.AVAILABLE));
+
         return dataModels;
     }
 
@@ -153,6 +157,9 @@ public class UserItemList {
         ArrayList<ItemDataModel> dataModels = new ArrayList<>();
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camera", "Professional System", "Mark Dent", ItemStatus.INCOMING,30));
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.bicycle_item),"Bicycle", "Lightweight Mountain Bike", "John Dent", ItemStatus.INCOMING, 7));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.alarm_clock_2),"Alarm Clock", "For waking up in the morning", "Jason Bateman", ItemStatus.INCOMING, 5));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.watch),"Watch", "Tell time with style", "Christopher Nolan", ItemStatus.INCOMING, 21));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.transit_pass),"Transit Pass", "Take the bus", "Matt Foderaro", ItemStatus.INCOMING, 2));
         return dataModels;
     }
 
