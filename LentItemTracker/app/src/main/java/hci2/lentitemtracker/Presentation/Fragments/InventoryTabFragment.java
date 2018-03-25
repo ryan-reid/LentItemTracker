@@ -13,6 +13,7 @@ import com.wdullaer.swipeactionadapter.SwipeActionAdapter;
 import com.wdullaer.swipeactionadapter.SwipeDirection;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.R;
 import hci2.lentitemtracker.adapters.ItemAdapter;
@@ -60,7 +61,7 @@ public class InventoryTabFragment extends InventoryFragment {
                 for (int pos : position) {
                     ItemDataModel model = (ItemDataModel) listItemAdapter.getItem(pos);
                     UserItemList.addToRequestList(model);
-                    adapter.removeItem(model);
+                    model.setStatus(ItemStatus.PENDING);
                     listItemAdapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), model.getTitle() + " has been requested", Toast.LENGTH_SHORT).show();
                 }

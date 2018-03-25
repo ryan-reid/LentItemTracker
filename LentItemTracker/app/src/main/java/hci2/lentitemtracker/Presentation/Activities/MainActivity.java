@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         switch(item.getItemId()) {
@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.approve_all_borrow_requests:
                 UserItemList.approveAllOutgoingRequests();
                 Util.refreshData(this, 1);
+                return true;
             case R.id.sort_request_by_item_title:
                 UserItemList.sortRequestItemsByName();
                 Util.refreshData(this, 3);

@@ -9,10 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.wdullaer.swipeactionadapter.SwipeActionAdapter;
 import com.wdullaer.swipeactionadapter.SwipeDirection;
-
 import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
@@ -20,7 +18,6 @@ import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.AcceptRequest
 import hci2.lentitemtracker.Presentation.Fragments.DialogFragments.CancelRequestFragment;
 import hci2.lentitemtracker.R;
 import hci2.lentitemtracker.Utilities.Util;
-import hci2.lentitemtracker.adapters.ItemAdapter;
 import hci2.lentitemtracker.adapters.RequestAdapter;
 
 public class RequestTabFragment extends InventoryFragment {

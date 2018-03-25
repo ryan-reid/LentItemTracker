@@ -27,13 +27,18 @@ public class UserItemList {
 
 
     public static void approveAllOutgoingRequests() {
-        for (int i = 0; i < requestItems.size(); i++) {
-            if(requestItems.get(i).getStatus().equals(ItemStatus.PENDING)) {
-                ItemDataModel item = requestItems.get(i);
-                removeItemWithGuid(item.getId());
+        ArrayList<String> guidstoRemove = new ArrayList<String>();
+
+        for(ItemDataModel item : requestItems) {
+            if(item.getStatus().equals(ItemStatus.PENDING) || item.getStatus().equals(ItemStatus.AVAILABLE)) {
+                guidstoRemove.add(item.getId());
                 item.setStatus(ItemStatus.BORROWED);
                 borrowedItems.add(item);
             }
+        }
+
+        for(String guid : guidstoRemove) {
+            removeItemWithGuid(guid);
         }
 
     }
