@@ -10,6 +10,7 @@ import hci2.lentitemtracker.Persistence.ItemDataModel;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Activities.MainActivity;
+import hci2.lentitemtracker.Presentation.Fragments.RequestTabFragment;
 
 public class CancelRequestFragment extends DialogFragment {
 
@@ -30,12 +31,11 @@ public class CancelRequestFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ItemDataModel item = UserItemList.getItemByGuid(guid);
-                UserItemList.removeItemWithGuid(guid);
+                // UserItemList.(guid);
                 item.setStatus(ItemStatus.AVAILABLE);
                 UserItemList.addItemToUserList(item);
                 MainActivity activity = (MainActivity) getActivity();
                 activity.resetData(3);
-
             }
         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override

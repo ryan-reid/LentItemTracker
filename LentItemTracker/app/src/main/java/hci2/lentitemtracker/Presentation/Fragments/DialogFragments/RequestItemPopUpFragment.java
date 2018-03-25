@@ -17,11 +17,15 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import hci2.lentitemtracker.Persistence.ItemDataModel;
+import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.R;
+import hci2.lentitemtracker.Utilities.Util;
 
 public class RequestItemPopUpFragment extends DialogFragment {
     private EditText startDate;
@@ -129,106 +133,38 @@ public class RequestItemPopUpFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Item has been requested", Toast.LENGTH_LONG).show();
-                // dataModels.get(clickPosition).setStatus(ItemStatus.PENDING);
+                dataModels.get(clickPosition).setStatus(ItemStatus.PENDING);
 
-
-                // model.setNumDaysWanted(getDays());
-                // UserItemList.addToRequestList(model);
-                // Util.refreshData(getActivity(), 0);
+                model.setNumDaysWanted(getDays());
+                UserItemList.addToRequestList(model);
+                Util.refreshData(getActivity(), 0);
                 getDialog().dismiss();
             }
         });
     }
 
-//    private int getDays() {
-//        String startDateX = ((EditText) this.getDialog().findViewById(R.id.startDate)).getText().toString();
-//        String endDateX = ((EditText) this.getDialog().findViewById(R.id.endDate)).getText().toString();
-//        int daysAvailable = 0;
-//
-//        SimpleDateFormat myFormat = new SimpleDateFormat("MM/dd/yy");
-//
-//        try {
-//            Date date1 = myFormat.parse(startDateX);
-//            Date date2 = myFormat.parse(endDateX);
-//
-//            daysAvailable = date2.getDate() - date1.getDate();
-//
-//
-//        } catch(ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return daysAvailable;
-//    }
-//
-//    private void setupStartDate() {
-//        startDate = (EditText) this.getDialog().findViewById(R.id.startDate);
-//
-//
-//        final DatePickerDialog.OnDateSetListener startDateListener = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int monthOfYear,
-//                                  int dayOfMonth) {
-//                startCalendar.set(Calendar.YEAR, year);
-//                startCalendar.set(Calendar.MONTH, monthOfYear);
-//                startCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//                updateLabelStart();
-//            }
-//
-//        };
-//
-//        startDate.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                new DatePickerDialog(getDialog().getContext(), startDateListener, startCalendar
-//                        .get(Calendar.YEAR), startCalendar.get(Calendar.MONTH),
-//                        startCalendar.get(Calendar.DAY_OF_MONTH)).show();
-//            }
-//        });
-//    }
-//
-//    private void setupEndDate() {
-//        endDate = (EditText) this.getDialog().findViewById(R.id.endDate);
-//
-//
-//        final DatePickerDialog.OnDateSetListener startDateListener = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int monthOfYear,
-//                                  int dayOfMonth) {
-//                startCalendar.set(Calendar.YEAR, year);
-//                startCalendar.set(Calendar.MONTH, monthOfYear);
-//                startCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//                updateLabelEnd();
-//            }
-//
-//        };
-//
-//        endDate.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                new DatePickerDialog(getDialog().getContext(), startDateListener, startCalendar
-//                        .get(Calendar.YEAR), startCalendar.get(Calendar.MONTH),
-//                        startCalendar.get(Calendar.DAY_OF_MONTH)).show();
-//            }
-//        });
-//    }
-//
-//
-//    private void updateLabelStart() {
-//        String myFormat = "MM/dd/yy";
-//        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-//
-//        startDate.setText(sdf.format(startCalendar.getTime()));
-//    }
-//
-//
-//    private void updateLabelEnd() {
-//        String myFormat = "MM/dd/yy";
-//        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-//
-//        endDate.setText(sdf.format(startCalendar.getTime()));
-//    }
+    private int getDays() {
+        int daysAvailable = 1;
+
+        try {
+            Date start = startCalendar.getTime();
+            Date end = endCalendar.getTime();
+
+            long diff = end.getTime() - start.getTime();
+
+            daysAvailable = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+
+            // Minimum number of days that an item can be borrowed for
+
+            if(daysAvailable < 1){
+                return 1;
+            }
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return daysAvailable;
+    }
 }
 

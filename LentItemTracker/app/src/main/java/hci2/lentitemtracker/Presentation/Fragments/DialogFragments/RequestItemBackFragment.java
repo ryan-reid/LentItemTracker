@@ -9,6 +9,7 @@ import android.support.v4.app.DialogFragment;
 import hci2.lentitemtracker.Persistence.ItemStatus;
 import hci2.lentitemtracker.Persistence.UserItemList;
 import hci2.lentitemtracker.Presentation.Activities.MainActivity;
+import hci2.lentitemtracker.Presentation.Fragments.LentTabFragment;
 import hci2.lentitemtracker.Utilities.Util;
 
 public class RequestItemBackFragment extends DialogFragment {
@@ -30,6 +31,8 @@ public class RequestItemBackFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 UserItemList.getLentItems().get(indexClicked).setStatus(ItemStatus.RECALLED);
+                UserItemList.getLentItems().remove(indexClicked);
+                LentTabFragment.refreshData();
                 Util.refreshData(getActivity(), 2);
                 dismiss();
             }

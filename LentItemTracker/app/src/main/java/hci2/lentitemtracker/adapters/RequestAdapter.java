@@ -38,7 +38,7 @@ public class RequestAdapter extends ItemAdapter {
 
     @NonNull
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, @NonNull ViewGroup viewGroup) {
         RequestAdapter.RequestRowView viewHolder;
         ItemDataModel dataModel = this.getItem(position);
         final View result;

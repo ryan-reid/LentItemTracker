@@ -1,5 +1,6 @@
 package hci2.lentitemtracker.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -54,11 +55,12 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
         ItemDataModel clicked = (ItemDataModel) getItem(clickedPosition);
     }
 
+    @SuppressLint("DefaultLocale")
     @NonNull
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup){
+    public View getView(int position, View view, @NonNull ViewGroup viewGroup){
         ViewHolder viewHolder;
-        ItemDataModel dataModel = (ItemDataModel) getItem(position);
+        ItemDataModel dataModel = getItem(position);
         final View result;
         if(view == null){
             viewHolder = new ViewHolder();
@@ -99,6 +101,7 @@ public class ItemAdapter extends ArrayAdapter implements View.OnClickListener {
         this.dataModels.remove(item);
     }
 
+    @NonNull
     public ItemDataModel getItem(int position){
         return this.dataModels.get(position);
     }

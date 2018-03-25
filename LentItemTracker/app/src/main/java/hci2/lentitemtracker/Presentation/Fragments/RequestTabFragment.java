@@ -2,6 +2,7 @@ package hci2.lentitemtracker.Presentation.Fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,12 +64,13 @@ public class RequestTabFragment extends InventoryFragment {
             }
 
             @Override
-            public void onSwipe(int[] position, SwipeDirection[] direction) {
+            public void onSwipe(int[] positionList, SwipeDirection[] directionList) {
                 RequestAdapter adapter = (RequestAdapter) listItemAdapter.getAdapter();
-                for(int i: position) {
-                    ItemDataModel model = adapter.getItem(i);
+                for(int i=0; i < positionList.length; i++) {
                     try {
-                        switch (direction[i]) {
+                        int position = positionList[i];
+                        ItemDataModel model = adapter.getItem(position);
+                        switch (directionList[i]) {
                             case DIRECTION_FAR_RIGHT:
                                 model.setStatus(ItemStatus.LENT);
                                 UserItemList.addItemToLentList(model);

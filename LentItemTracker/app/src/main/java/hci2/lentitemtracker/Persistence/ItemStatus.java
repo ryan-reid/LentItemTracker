@@ -10,5 +10,6 @@ public enum ItemStatus {
     PENDING,
     RECALLED,
     RETURNED,
-    INCOMING;
+    INCOMING,
+    REQUESTED;
 }

@@ -17,13 +17,13 @@ public class UserItemList {
 
     private static Context context;
 
-    private static ArrayList<ItemDataModel> items = new ArrayList<ItemDataModel>();
+    private static ArrayList<ItemDataModel> items = new ArrayList<>();
 
-    private static ArrayList<ItemDataModel> requestItems = new ArrayList<ItemDataModel>();
+    private static ArrayList<ItemDataModel> requestItems = new ArrayList<>();
 
-    private static ArrayList<ItemDataModel> lentItems = new ArrayList<ItemDataModel>();
+    private static ArrayList<ItemDataModel> lentItems = new ArrayList<>();
 
-    private static ArrayList<ItemDataModel> borrowedItems = new ArrayList<ItemDataModel>();
+    private static ArrayList<ItemDataModel> borrowedItems = new ArrayList<>();
 
 
     public static void approveAllOutgoingRequests() {
@@ -119,15 +119,11 @@ public class UserItemList {
         lentItems.add(item);
     }
 
-    public static void addToBorrowedList(ItemDataModel item) {
-        borrowedItems.add(item);
-    }
-
     public static void addToRequestList(ItemDataModel item) {
         requestItems.add(item);
     }
 
-    private static ArrayList<ItemDataModel> createSampleData(){
+    public static ArrayList<ItemDataModel> createSampleData(){
         ArrayList<ItemDataModel> dataModels = new ArrayList<>();
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.controller_item), "Xbox Controller", "Xbox One Controller", "Kevin Jones", 30, ItemStatus.AVAILABLE));
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.car_item),"Car", "Fast... and extra furious", "Drew Williams", 7, ItemStatus.AVAILABLE));
@@ -148,11 +144,17 @@ public class UserItemList {
         return dataModels;
     }
 
-
     private static ArrayList<ItemDataModel> createSampleRequestItems(){
         ArrayList<ItemDataModel> dataModels = new ArrayList<>();
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camera", "Professional System", "Mark Dent", ItemStatus.INCOMING,30));
         dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.bicycle_item),"Bicycle", "Lightweight Mountain Bike", "John Dent", ItemStatus.INCOMING, 7));
+        return dataModels;
+    }
+
+    public static ArrayList<ItemDataModel> createSampleBorrowedItems(){
+        ArrayList<ItemDataModel> dataModels = new ArrayList<>();
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.camera_item), "Camera", "Professional System", "Mark Dent", ItemStatus.BORROWED,30));
+        dataModels.add(new ItemDataModel(BitmapFactory.decodeResource(UserItemList.context.getResources(), R.drawable.bicycle_item),"Bicycle", "Lightweight Mountain Bike", "John Dent", ItemStatus.BORROWED, 7));
         return dataModels;
     }
 
@@ -174,5 +176,4 @@ public class UserItemList {
             }
         });
     }
-
 }

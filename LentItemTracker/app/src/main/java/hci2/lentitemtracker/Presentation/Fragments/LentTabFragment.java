@@ -35,4 +35,8 @@ public class LentTabFragment extends InventoryFragment {
         frag.setArguments(bundle);
         frag.show(fm, "addNewItemFragment");
     }
+
+    public static void refreshData(){
+        itemAdapter.notifyDataSetChanged();
+    }
 }

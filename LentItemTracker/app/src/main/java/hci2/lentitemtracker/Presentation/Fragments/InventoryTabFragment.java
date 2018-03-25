@@ -1,6 +1,5 @@
 package hci2.lentitemtracker.Presentation.Fragments;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
